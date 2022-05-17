@@ -1,0 +1,158 @@
+* { margin: 0; padding: 0; } 
+* {font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;}
+
+:root
+{
+    --background: #101010;
+    --text-default: #dfdfdf;
+    --detail-green: #63e9a6;
+    --detail-purple: #a663e9;
+}
+body
+{
+    background-color: var(--background);
+    color: var(--text-default);
+}
+
+div.menu
+{
+    height: 8vh;
+    background-color: #000000;
+
+}
+
+input.barcode
+{
+    margin-right: 10vw;
+    margin-left: 20vw;
+    width: 69vw;
+
+    margin-top: 2vh;
+    height: 7vh;
+
+    border: 3px;
+    border-style: solid;
+    border-color: var(--detail-purple);
+
+    border-bottom-color: #63e9a6;
+    border-left-color: #63e9a6;
+
+    background-color: #000000;
+    color: #ffffff;
+    
+    font-size: 3vh;
+    text-align: right;  
+}
+
+p.minimal
+{
+    font-family: 'Courier New', Courier, monospace;
+    padding-bottom: 0.5vh;
+}
+
+div.description
+{
+    padding-right: 11vw;
+    padding-top: 5vh;
+
+    text-align: right;
+    font-size: 4vh;    
+}
+
+
+
+
+td.historico
+{
+    padding-left: 5vw;
+    width: 30vw; 
+}
+
+td.showQtd
+{
+    width:  10vw;
+    text-align: left;
+}
+
+td.showVal
+{
+    width: 20vw; 
+    text-align: center;
+}
+
+td.showSubTt
+{
+    text-align: right;
+    width:20vw; 
+}
+
+
+
+div.product
+{
+    border: 3px;
+    border-style: solid;
+    border-color: var(--detail-green);
+    border-top: none;
+    border-right: none;
+
+    font-size: 2.5vh;
+    height: 13vh;
+}
+
+.ralign
+{
+    text-align: right;
+}
+
+.show
+{
+    border: 3px;
+    border-left: 0px;
+    border-bottom: 0px;
+    height: 13vh;
+
+    width: 30vw;
+    
+    text-align: left;
+    border-style: solid;
+    border-color: var(--detail-purple);
+
+    margin-right: 10vw;
+
+    float: right;
+    
+}
+
+p.atrib
+{
+    font-size: 3vh;
+}
+
+p.valueAtrib
+{
+    padding-top: 2.5vh;
+    padding-right: 1vw;
+    text-align: right;
+    font-size: 5vh;
+}
+
+
+
+table.functional
+{
+    margin-top: 5vh;
+}
+
+div.middle
+{
+    width: 18vw;
+    background-color: #0000ff;
+}
+
+a
+{
+    padding-left: 10vw;
+    text-decoration: none;
+    color: var(--text-default);
+}
