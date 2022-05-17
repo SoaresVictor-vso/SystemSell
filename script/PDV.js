@@ -5,31 +5,27 @@ fetch('../FakeDb/Products.json').then(function(resp) {
 .then(function(data) {
     db = data;
     console.log(data);
-    write("003");
+    write();
 });
 
 /*console.log(dbJson)*/
 
+document.addEventListener('keyup', (e) => {
+    if (e.code === 'Enter' || e.code === 'NumpadEnter')
+    {
+        write();
+    }
+  
+  });
 
-/*function search(code)
+function write()
 {
-    
-    db.forEach(element => {
-        if(element.Barcode == code)
-        {
-            console.log("Ok, Ok!");
-            console.log(JSON.stringify(element.Desciption));
-            let ret = JSON.stringify(element.Desciption) + "," + JSON.stringify(element.Value);
-            
-        }
-    });
-}*/
+    console.log("Patooo")
+    cod = document.getElementById("barcode").value;
 
-function write(cod)
-{
     let val;
     let desc;
-    let quant = 5;
+    let quant = 1;
     db.forEach(element => {
         if(element.Barcode == cod)
         {
