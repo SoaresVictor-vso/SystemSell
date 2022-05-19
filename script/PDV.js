@@ -1,6 +1,7 @@
 let db;
-
 let soma = 0.00;
+
+let nocadPopup = false;
 
 function prod(barcode, description, value, quant) {
     this.barcode = barcode;
@@ -24,64 +25,65 @@ fetch('../FakeDb/Products.json').then(function(resp) {
 .then(function(data) {
     db = data;
     console.log(data);
-    write();
 });
 
 /*console.log(dbJson)*/
 
+document.addEventListener('keyup', () => {
+    if(nocadPopup)
+    {
+        killNocad();
+    }
+})
+
 document.addEventListener('keyup', (e) => {
     if (e.code === 'Enter' || e.code === 'NumpadEnter')
     {
-        write();
+        if(document.getElementById("Barcode").value != "")
+        {
+            write();
+        }
     }
   
   });
 
+document.addEventListener('click',() => {
+    if(nocadPopup)
+    {
+        killNocad();
+    }
+})
+
+
+
 function write()
 {
-    let quant = 1;
-    let cod;
     let enter;
-
-    
-    
-    enter = document.getElementById("Barcode").value;
-    document.getElementById("Barcode").value = "";
-
-    while(enter.includes(" "))
-    {
-        enter = enter.replace(" ",'');
-    }
-
-    if(enter.includes('*'))
-    {
-        console.log("Mais de um?????");
-        sstr = enter.split("*");
-        quant = sstr[0];
-        cod = sstr[1];
-        console.log(sstr);
-    }
-    else
-    {
-        cod = enter;
-    }
-
+    let quant;
+    let cod;
     let val;
     let desc = "";
+    let sub;
+    let sstr;
     
+    
+    enter = readBarcode();
+
+    sstr = getQuantCod(enter);
+    quant = sstr[0];
+    cod = sstr[1];
+
     db.forEach(element => {
         if(element.Barcode == cod)
         {
-            console.log(JSON.stringify(element.Desciption));
             val = JSON.stringify(element.Value);
             desc = JSON.stringify(element.Desciption);
-            
         }
     });
 
     if(val == undefined)
     {
-        console.log("sem cadastro");
+        nocadException(cod, quant);
     }
     else
     {   
@@ -89,85 +91,100 @@ function write()
         {
             val = val.replace("\"",'');
         }
+
+        sub = parseFloat(val) * parseFloat(quant);
+        soma += sub;
+        desc = desc.substring(1, desc.length - 1);
         
         document.getElementById("ValUnit").innerHTML = "R$" + val;
-
         document.getElementById("Qtd").innerHTML = quant + "un";
-
-        let sub = 0.03
-        sub = parseFloat(val) * parseFloat(quant);
         document.getElementById("SubTotal").innerHTML = "R$" + sub.toFixed(2);
-        
-        soma += sub;//.toFixed(2);
         document.getElementById("Total").innerHTML = "R$" + soma.toFixed(2);
-
-        desc = desc.substring(1, desc.length - 1);
-
-        let freeSpace = 40 - desc.length;
-
-        let finalDesc = "";
-
-        for(let i = 0; i < freeSpace; i++)
-        {
-            finalDesc += " ";
-        }
-
-        finalDesc += desc;
-
-        document.getElementById("Description").innerHTML = finalDesc;
+        document.getElementById("Description").innerHTML = desc;
 
         historico.push(new prod(cod, desc, parseFloat(val).toFixed(2), parseFloat(quant).toFixed(2)));
-        console.log(historico);
-
         loadHist();
-        
-
     }
-    
-    
+}
+
+function getQuantCod(enter)
+{
+    if(enter.includes('*'))
+    {
+        data = enter.split("*");
+    }
+    else
+    {
+        data = [1, enter];
+    }
+    return data;
+}
+
+function nocadException(cod, quant)
+{
+    //ativa a popup de alerta e adiciona um produto ao historico
+    let popup = document.getElementById("PopupSemCadastro");
+    popup.classList.remove("popupInactive");
+    popup.classList.add("popupActive");
+    nocadPopup = true;
+
+    historico.push(new prod(cod, "Produto sem Cadastro", 0.00, quant));
+    loadHist();
+}
+
+function readBarcode()
+{
+    //Le o codigo de barras e retorna uma string sem espaços
+    typed = document.getElementById("Barcode").value;
+    document.getElementById("Barcode").value = "";
+
+    while(typed.includes(" "))
+    {
+        typed = typed.replace(" ",'');
+    }
+    return typed;
 }
 
 function loadHist()
 {
-    switch (historico.length) {
-        case 0:
-            document.getElementById("P1").innerHTML = "";
-            document.getElementById("P2").innerHTML = "";
-            document.getElementById("P3").innerHTML = "";
-            document.getElementById("P4").innerHTML = "";
-            break;
-        case 1:
-            document.getElementById("P1").innerHTML = writeProductFromIndex(historico.length - 1);
-            document.getElementById("P2").innerHTML = "";
-            document.getElementById("P3").innerHTML = "";
-            document.getElementById("P4").innerHTML = "";
-            break;
-        case 2:
-            document.getElementById("P1").innerHTML = writeProductFromIndex(historico.length - 1);
-            document.getElementById("P2").innerHTML = writeProductFromIndex(historico.length - 2);
-            document.getElementById("P3").innerHTML = "";
-            document.getElementById("P4").innerHTML = "";
-            break;
-        case 3:
-            document.getElementById("P1").innerHTML = writeProductFromIndex(historico.length - 1);
-            document.getElementById("P2").innerHTML = writeProductFromIndex(historico.length - 2);
-            document.getElementById("P3").innerHTML = writeProductFromIndex(historico.length - 3);
-            document.getElementById("P4").innerHTML = "";
-            break;
-    
-        default:
-            document.getElementById("P1").innerHTML = writeProductFromIndex(historico.length - 1);
-            document.getElementById("P2").innerHTML = writeProductFromIndex(historico.length - 2);
-            document.getElementById("P3").innerHTML = writeProductFromIndex(historico.length - 3);
-            document.getElementById("P4").innerHTML = writeProductFromIndex(historico.length - 4);
-            break;
+    //carrega o histórico de um array para o HTML utilizando 
+    //a função "writeProductFromIndex"
+    let i;
+    console.log(historico.length)
+    for(i = 1; i <= 4; i++)
+    {
+        if(i <= historico.length)
+        {
+            document.getElementById("P"+i).style.width = "30vw"
+            document.getElementById("P"+i).innerHTML = writeProductFromIndex(historico.length - (i), i);
+        }
+        else
+        {
+            document.getElementById("P"+i).style.width = 0;
+        }
     }
 }
 
-function writeProductFromIndex(index)
+function writeProductFromIndex(index, box)
 {
-    console.log(index + "test")
+    //escreve o html de cada peça do histórico e deixa vermelho
+    //caso o produto nao tenha cadastro
+    if(historico[index].description == "Produto sem Cadastro")
+    {
+        document.getElementById("P"+box).classList.add("alerta");
+    }
+    else
+    {
+        document.getElementById("P"+box).classList.remove("alerta");
+    }
     return "<br\><p class=\"minimal ralign\">"+historico[index].barcode+"</p\><p class=\"minimal ralign\">"+historico[index].description+"</p\><table\><tr\><td class=\"showQtd\"\><p class=\"minimal\">"+historico[index].quant+"un</p\></td\><td class=\"showVal\"\><p class=\"minimal\">R$"+historico[index].value+"</p\></td\><td class=\"showSubTt\"\><p class=\"minimal\">R$"+(historico[index].value*historico[index].quant).toFixed(2)+"</p\></td\></tr\></table\>";
-    
- 
+}
+
+function killNocad()
+{
+    //Torna invisivel a popup de alerta de cadastro nao existente
+    let popup = document.getElementById("PopupSemCadastro");
+    popup.classList.remove("popupActive");
+    popup.classList.add("popupInactive");
+    nocadPopup = false;
 }
