@@ -2,6 +2,7 @@ let db;
 let soma = 0.00;
 
 let nocadPopup = false;
+let lock = false;
 
 function prod(barcode, description, value, quant) {
     this.barcode = barcode;
@@ -13,10 +14,13 @@ function prod(barcode, description, value, quant) {
 let historico = [
 ]
 
-document.getElementById("P1").innerHTML = "";
+loadHist();
+
+/*document.getElementById("P1").innerHTML = "";
 document.getElementById("P2").innerHTML = "";
 document.getElementById("P3").innerHTML = "";
-document.getElementById("P4").innerHTML = "";
+document.getElementById("P4").innerHTML = "";*/
+
 
 
 fetch('../FakeDb/Products.json').then(function(resp) {
@@ -27,36 +31,74 @@ fetch('../FakeDb/Products.json').then(function(resp) {
     console.log(data);
 });
 
-/*console.log(dbJson)*/
-
-document.addEventListener('keyup', () => {
-    if(nocadPopup)
-    {
-        killNocad();
-    }
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById("CancelFecharCompras").addEventListener("mousedown", () =>{
+        killPopup("PopupFecharCompras");
+        lock = false;
+    })
+    document.getElementById("PgtoDin").addEventListener('mousedown', () => {
+        pagamentoDinheiro();
+    })
+    document.getElementById("funcF4").addEventListener("mousedown", () => {
+        fecharCompra();
+    })
 })
+
+
 
 document.addEventListener('keyup', (e) => {
     if (e.code === 'Enter' || e.code === 'NumpadEnter')
     {
-        if(document.getElementById("Barcode").value != "")
+        if(document.getElementById("Barcode").value != "" && !lock)
         {
-            write();
+            loadProduct();
         }
+    }
+    else if (e.code === "F4")
+    {
+        fecharCompra();
+    }
+    else if(e.code == 'Escape')
+    {
+        killPopup("PopupFecharCompras");
+        lock = false;
+    }
+    
+    if(lock)
+    {
+        atualizarValorFinal();
     }
   
   });
 
+  document.addEventListener('keydown', () => {
+    if(nocadPopup)
+    {
+        console.log("tecla")
+        killPopup("PopupSemCadastro");
+        nocadPopup = false;
+    }
+  })
+
 document.addEventListener('click',() => {
     if(nocadPopup)
     {
-        killNocad();
+        
+    console.log("pop it up")
+        killPopup("PopupSemCadastro");
+        nocadPopup = false;
+    }
+    if(lock)
+    {
+        atualizarValorFinal();
     }
 })
 
 
 
-function write()
+
+
+function loadProduct()
 {
     let enter;
     let quant;
@@ -96,15 +138,50 @@ function write()
         soma += sub;
         desc = desc.substring(1, desc.length - 1);
         
-        document.getElementById("ValUnit").innerHTML = "R$" + val;
-        document.getElementById("Qtd").innerHTML = quant + "un";
-        document.getElementById("SubTotal").innerHTML = "R$" + sub.toFixed(2);
-        document.getElementById("Total").innerHTML = "R$" + soma.toFixed(2);
-        document.getElementById("Description").innerHTML = desc;
+        write(val, quant, sub, soma, desc);
+        
 
         historico.push(new prod(cod, desc, parseFloat(val).toFixed(2), parseFloat(quant).toFixed(2)));
         loadHist();
     }
+}
+
+
+function pagamentoDinheiro()
+{
+    killPopup("PopupFecharCompras");
+    lock = false;
+    historico = [];
+    loadHist();
+    soma = 0.00;
+    write(0.00,0.00,0.00,soma, "");
+}
+
+function fecharCompra()
+{
+    let desconto;
+    let final;
+
+    awakePopup("PopupFecharCompras");
+    lock = true;
+    atualizarValorFinal();
+}
+
+function atualizarValorFinal()
+{
+    desconto = parseFloat(document.getElementById("Desconto").value).toFixed(2);
+    final = (soma - desconto).toFixed(2);
+    document.getElementById("ValorTotal").innerHTML = soma.toFixed(2);
+    document.getElementById("ValorComDesconto").innerHTML = final;
+}
+
+function write(val, quant, sub, soma, desc)
+{
+    document.getElementById("ValUnit").innerHTML = "R$" + val;
+    document.getElementById("Qtd").innerHTML = quant + "un";
+    document.getElementById("SubTotal").innerHTML = "R$" + sub.toFixed(2);
+    document.getElementById("Total").innerHTML = "R$" + soma.toFixed(2);
+    document.getElementById("Description").innerHTML = desc;
 }
 
 function getQuantCod(enter)
@@ -112,6 +189,10 @@ function getQuantCod(enter)
     if(enter.includes('*'))
     {
         data = enter.split("*");
+        if(data[0] == "")
+        {
+            data[0] = 1;
+        }
     }
     else
     {
@@ -123,9 +204,8 @@ function getQuantCod(enter)
 function nocadException(cod, quant)
 {
     //ativa a popup de alerta e adiciona um produto ao historico
-    let popup = document.getElementById("PopupSemCadastro");
-    popup.classList.remove("popupInactive");
-    popup.classList.add("popupActive");
+    
+    awakePopup("PopupSemCadastro");
     nocadPopup = true;
 
     historico.push(new prod(cod, "Produto sem Cadastro", 0.00, quant));
@@ -150,7 +230,6 @@ function loadHist()
     //carrega o histórico de um array para o HTML utilizando 
     //a função "writeProductFromIndex"
     let i;
-    console.log(historico.length)
     for(i = 1; i <= 4; i++)
     {
         if(i <= historico.length)
@@ -161,6 +240,7 @@ function loadHist()
         else
         {
             document.getElementById("P"+i).style.width = 0;
+            document.getElementById("P"+i).innerHTML = "";
         }
     }
 }
@@ -180,11 +260,19 @@ function writeProductFromIndex(index, box)
     return "<br\><p class=\"minimal ralign\">"+historico[index].barcode+"</p\><p class=\"minimal ralign\">"+historico[index].description+"</p\><table\><tr\><td class=\"showQtd\"\><p class=\"minimal\">"+historico[index].quant+"un</p\></td\><td class=\"showVal\"\><p class=\"minimal\">R$"+historico[index].value+"</p\></td\><td class=\"showSubTt\"\><p class=\"minimal\">R$"+(historico[index].value*historico[index].quant).toFixed(2)+"</p\></td\></tr\></table\>";
 }
 
-function killNocad()
+function killPopup(popupName)
 {
-    //Torna invisivel a popup de alerta de cadastro nao existente
-    let popup = document.getElementById("PopupSemCadastro");
+    //desativa uma popup
+    let popup = document.getElementById(popupName.toString());
     popup.classList.remove("popupActive");
     popup.classList.add("popupInactive");
-    nocadPopup = false;
+}
+
+function awakePopup(popupName)
+{
+    //Ativa uma popup
+    
+    let popup = document.getElementById(popupName.toString());
+    popup.classList.add("popupActive");
+    popup.classList.remove("popupInactive");
 }

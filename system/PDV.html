@@ -11,7 +11,16 @@
     <div class="main">
 
         <div class="menu">
-
+            <table>
+                <tr>
+                    <td class="menuOpt" id="funcF4">
+                        <h4>Fechar compra</h4>
+                        <p>(F4)</p>
+                    </td>
+                    <td class="menuOpt"></td>
+                </tr>
+            </table>
+            <div class="hline"></div>
         </div>
 
         <div class="entrada">
@@ -19,7 +28,7 @@
         </div>
 
         <div class="description" id="Description">
-            <p class="minimal">0123456789012345678901234567890123456789</p>
+            <p class="minimal"></p>
         </div>
        
         <table class="functional">
@@ -131,19 +140,19 @@
                     <div class="stats">
                         <div class="show">
                             <p class="atrib">Valor Unitário</p>
-                            <p class="valueAtrib" id="ValUnit">R$999,99</p>                        
+                            <p class="valueAtrib" id="ValUnit">R$0,00</p>                        
                         </div>
                         <div class="show">
                             <p class="atrib">Quantidade</p>
-                            <p class="valueAtrib" id="Qtd">999un</p>                        
+                            <p class="valueAtrib" id="Qtd">0un</p>                        
                         </div>
                         <div class="show">
                             <p class="atrib">Subtotal</p>
-                            <p class="valueAtrib" id="SubTotal">R$9999999,99</p>                        
+                            <p class="valueAtrib" id="SubTotal">R$0,00</p>                        
                         </div>
                         <div class="show">
                             <p class="atrib">Valor total</p>
-                            <p class="valueAtrib" id="Total">R$99999999,99</p>                        
+                            <p class="valueAtrib" id="Total">R$0,00</p>                        
                         </div>
                     </div>
                     
@@ -167,6 +176,34 @@
     <div class="msgPopup">
         <h2 class="alerta">Alerta</h2>
         <p class="alerta">Produto não cadastrado!</p>
+    </div>
+</div>
+
+<div class="popup popupInactive" id="PopupFecharCompras">
+    <div class="activeFecharCompras">
+        <div class="fechar" id="CancelFecharCompras"><p>x</p></div>
+        
+        <h2>Fechamento de Compra</h2>
+        <table class="modoPagamento">
+            <tr>
+                <td class="modoPagamento ok" id="PgtoDin">dinheiro</td>
+                <td class="void"></td>
+                <td class="modoPagamento inProgress">cartao</td>
+            </tr>
+                <td class="void"></td>
+            <tr>
+                <td class="modoPagamento inProgress">pix</td>
+                <td class="void"></td>
+                <td class="modoPagamento inProgress">cheque</td>
+            </tr>
+        </table>
+        <h3 class="vTotal">Valor total: R$</h3><h3 class="vTotal" id="ValorTotal">0,00</h3> 
+        <h3></h3>
+        <h3 class="desconto">Desconto R$</h3> 
+        <input type="number" name="desconto" id="Desconto" class="desconto" value="0">  
+        <h3></h3>
+        <h3 class="vTotal">Valor Final: R$</h3> <h3 class="vTotal" id="ValorComDesconto">0,00</h3>  
+        
     </div>
 </div>
 </html>

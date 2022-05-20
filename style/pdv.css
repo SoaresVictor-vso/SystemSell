@@ -7,6 +7,7 @@
     --text-default: #dfdfdf;
     --detail-green: #63e9a6;
     --detail-purple: #a663e9;
+    --detail-red: #e64c4c;
 }
 body
 {
@@ -16,9 +17,14 @@ body
 
 div.menu
 {
+    width: 100%;
     height: 8vh;
     background-color: #000000;
 
+}
+div.hline
+{
+    width: 100%;
 }
 
 input.barcode
@@ -30,6 +36,7 @@ input.barcode
     margin-top: 2vh;
     height: 7vh;
 
+    border-radius: 10px;
     border: 3px;
     border-style: solid;
     border-color: var(--detail-purple);
@@ -187,7 +194,7 @@ a
     border-radius: 10px;
     border:5px;
     border-style:solid ;
-    border-color: #e64c4c;
+    border-color: var(--detail-red);
 }
 
 h2.alerta
@@ -205,5 +212,128 @@ p.alerta
 {
     text-align: center;
     vertical-align: center;
-    color: #E64C4C;
+    color: var(--detail-red);
 }
+
+.activeFecharCompras
+{
+    position: relative;
+    border: 4px;
+    border-style: solid;
+    border-color: var(--detail-purple);
+    padding-top: 20px;
+    height: auto;
+    width: 30vw;
+    background-color: var(--background);
+    
+    text-align: center;
+    vertical-align: center;
+}
+
+table.modoPagamento
+{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 20%;
+    width: 60%;
+}
+
+.inProgress
+{
+    background-color: var(--detail-red);
+}
+
+.ok
+{
+    background-color: var(--detail-green);
+
+    cursor: pointer;
+}
+
+td.modoPagamento
+{
+    margin: 1vw;
+    width: 8vw;
+    height: 5vw;
+    border: 5px;
+    border-style: solid;
+    border-color: #000;
+    border-radius: 10px;
+    color: var(--background);
+}
+
+td.void
+{
+    height: 5px;
+    width: 5px;
+}
+
+h3.desconto
+{
+    margin-top: 10px;
+    display: inline-block;
+}
+
+input.desconto
+{
+    margin-top: 10px;
+    margin-bottom: 40px;
+    display: inline-block;
+    height: 2em;
+    width: 6em;
+    font-size: large;
+}
+
+h3.vTotal
+{
+    display: inline-block;
+    padding-bottom: 30px;
+}
+
+div.fechar
+{
+    width: 20px;
+    height: 20px;
+
+    background-color: var(--detail-red);
+     text-align: center;
+    border: var(--detail-red);
+    border-style: solid;
+    border-radius: 0;
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+
+    cursor: pointer;
+}
+
+.menuOpt
+{
+    
+    height: 7.7vh;
+    margin-left: 20px;
+    padding-left: 20px;
+    border: 0px;
+    border-left: 2px;
+    
+    border-color: var(--text-default);
+    border-style: solid;
+    display: inline-block;
+    text-align: center;
+
+    cursor: pointer;
+}
+
+.menuOpt h4
+{
+    padding-top: 1.5vh;
+}
+
+ .hline
+ {
+    height: 0.5vh;
+    width: 100vw;
+
+    background-color: var(--text-default);
+ }
