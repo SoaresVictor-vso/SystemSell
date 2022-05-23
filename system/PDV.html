@@ -28,7 +28,7 @@
         </div>
 
         <div class="description" id="Description">
-            <p class="minimal"></p>
+            <p class="minimal">...</p>
         </div>
        
         <table class="functional">
@@ -38,93 +38,25 @@
                         <table>
                             <tr>
                                 <td>
-                                    <div  class="product" id="P1">
-                                        <br>
-                                        <p class="minimal ralign">7891234987321</p>
-                                        <p class="minimal">0123456789012345678901234567890123456789</p>
-                                        <table>
-                                            <tr>
-                                                <td class="showQtd">
-                                                    <p class="minimal">999un</p>
-                                                </td>
-                                                <td class="showVal">
-                                                    <p class="minimal">sR$9990000,00</p>
-                                                </td>
-                                                <td class="showSubTt">
-                                                    <p class="minimal">R$9990000,00</p>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                        
+                                    <div  class="product" id="P1">                                        
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <div  class="product" id="P2">
-                                        <br>
-                                        <p class="minimal ralign">7891234987321</p>
-                                        <p class="minimal">0123456789012345678901234567890123456789</p>
-                                        <table>
-                                            <tr>
-                                                <td class="showQtd">
-                                                    <p class="minimal">999un</p>
-                                                </td>
-                                                <td class="showVal">
-                                                    <p class="minimal">sR$9990000,00</p>
-                                                </td>
-                                                <td class="showSubTt">
-                                                    <p class="minimal">R$9990000,00</p>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                        
+                                    <div  class="product" id="P2">    
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <div  class="product" id="P3">
-                                        <br>
-                                        <p class="minimal ralign">7891234987321</p>
-                                        <p class="minimal">0123456789012345678901234567890123456789</p>
-                                        <table>
-                                            <tr>
-                                                <td class="showQtd">
-                                                    <p class="minimal">999un</p>
-                                                </td>
-                                                <td class="showVal">
-                                                    <p class="minimal">sR$9990000,00</p>
-                                                </td>
-                                                <td class="showSubTt">
-                                                    <p class="minimal">R$9990000,00</p>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                        
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <div  class="product" id="P4">
-                                        <br>
-                                        <p class="minimal ralign">7891234987321</p>
-                                        <p class="minimal">0123456789012345678901234567890123456789</p>
-                                        <table>
-                                            <tr>
-                                                <td class="showQtd">
-                                                    <p class="minimal">999un</p>
-                                                </td>
-                                                <td class="showVal">
-                                                    <p class="minimal">R$9990000,00</p>
-                                                </td>
-                                                <td class="showSubTt">
-                                                    <p class="minimal">R$9990000,00</p>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                        
                                     </div>
                                 </td>
                             </tr>
@@ -204,6 +136,40 @@
         <h3></h3>
         <h3 class="vTotal">Valor Final: R$</h3> <h3 class="vTotal" id="ValorComDesconto">0,00</h3>  
         
+    </div>
+</div>
+
+<div class="popup popupInactive" id="PopupFinalNocad">
+    <div class="msgFinalNocad">
+        <h2 class="alerta">Alerta</h2>
+        <p class="alerta">Fecahr compra com produto sem cadastro?</p>
+        <table>
+            <td>
+                <td><input type="button" value="Fechar Compra" class="nocadFinalBtn" id="nocadFinalBtnSeguir" onclick="forceFecharCompra()"></td>
+                <td><input type="button" value="Ver Lista" class="nocadFinalBtn" id="nocadFinalBtnVer" onclick="abrirLista()"></td>
+            </td>
+            
+            
+        </table>
+        
+    </div>
+</div>
+
+<div class="contPopup popupInactive" id="PopupLista">
+    <div class="lista">
+        <h2>Lista de produtos</h2>
+        
+        <div class="listaExibida" id="ListaExibida">
+        </div>
+
+        <table>
+            <td>
+                <td><input type="button" value="Fechar Compra" class="listaBtn" id="ListaSeguir" onclick="forceFecharCompra()"></td>
+                <td><input type="button" value="Voltar" class="listaBtn" id="ListaVoltar" onclick="fecharLista()"></td>
+            </td>
+            
+            
+        </table>
     </div>
 </div>
 </html>

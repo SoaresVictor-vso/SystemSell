@@ -2,7 +2,10 @@ let db;
 let soma = 0.00;
 
 let nocadPopup = false;
+let nocadFinal = false;
 let lock = false;
+let nocadAlert = false;
+let showlist = false;
 
 function prod(barcode, description, value, quant) {
     this.barcode = barcode;
@@ -35,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("CancelFecharCompras").addEventListener("mousedown", () =>{
         killPopup("PopupFecharCompras");
         lock = false;
+        document.getElementById("Desconto").value = 0.00;
     })
     document.getElementById("PgtoDin").addEventListener('mousedown', () => {
         pagamentoDinheiro();
@@ -42,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("funcF4").addEventListener("mousedown", () => {
         fecharCompra();
     })
+    
 })
 
 
@@ -58,10 +63,19 @@ document.addEventListener('keyup', (e) => {
     {
         fecharCompra();
     }
+    else if (e.code === "F8")
+    {
+        abrirLista();
+    }
     else if(e.code == 'Escape')
     {
+        if(showlist)
+        {
+            fecharLista();
+        }
         killPopup("PopupFecharCompras");
         lock = false;
+        document.getElementById("Desconto").value = 0;
     }
     
     if(lock)
@@ -146,6 +160,42 @@ function loadProduct()
     }
 }
 
+function loadList()
+{
+    let contentHtml = "<table>";
+    for (let i = 0; i < historico.length; i++) 
+    {
+        if(historico[i].description == "Produto sem Cadastro")
+        {
+            contentHtml += "<tr><td class = \"elementoLista\"><div class = \"redText\">" + writeProductFromIndex(i, -1) + "</div></tr></td>";
+        }
+        else
+        {
+            contentHtml += "<tr><td class = \"elementoLista\">" + writeProductFromIndex(i, -1) + "</tr></td>";
+        }
+        
+    }
+    
+    contentHtml += "</table>";
+    document.getElementById("ListaExibida").innerHTML = contentHtml;
+}
+
+function abrirLista()
+{
+    loadList();
+    showlist = true;
+    awakePopup("PopupLista");
+    if(nocadFinal)
+    {
+        killPopup("PopupFinalNocad");
+    }
+}
+
+function fecharLista()
+{
+    showlist = false;
+    killPopup("PopupLista");
+}
 
 function pagamentoDinheiro()
 {
@@ -154,14 +204,36 @@ function pagamentoDinheiro()
     historico = [];
     loadHist();
     soma = 0.00;
-    write(0.00,0.00,0.00,soma, "");
+    write(0.00,0.00,0.00,soma, "...");
+    document.getElementById("Desconto").value = 0.00;
+    nocadAlert = false;
 }
 
 function fecharCompra()
 {
     let desconto;
     let final;
+    if(nocadAlert)
+    {
+        awakePopup("PopupFinalNocad");
+        nocadFinal = true;
+    }
+    else
+    {
+        forceFecharCompra();
+    }
+}
 
+function forceFecharCompra()
+{
+    if(showlist)
+    {
+        fecharLista();
+    }
+    if(nocadFinal)
+    {
+        killPopup("PopupFinalNocad");
+    }
     awakePopup("PopupFecharCompras");
     lock = true;
     atualizarValorFinal();
@@ -204,7 +276,7 @@ function getQuantCod(enter)
 function nocadException(cod, quant)
 {
     //ativa a popup de alerta e adiciona um produto ao historico
-    
+    nocadAlert = true;
     awakePopup("PopupSemCadastro");
     nocadPopup = true;
 
@@ -249,15 +321,18 @@ function writeProductFromIndex(index, box)
 {
     //escreve o html de cada peça do histórico e deixa vermelho
     //caso o produto nao tenha cadastro
-    if(historico[index].description == "Produto sem Cadastro")
+    if(box != -1)
     {
-        document.getElementById("P"+box).classList.add("alerta");
+        if(historico[index].description == "Produto sem Cadastro")
+        {
+            document.getElementById("P"+box).classList.add("redText");
+        }
+        else
+        {
+            document.getElementById("P"+box).classList.remove("redText");
+        }
     }
-    else
-    {
-        document.getElementById("P"+box).classList.remove("alerta");
-    }
-    return "<br\><p class=\"minimal ralign\">"+historico[index].barcode+"</p\><p class=\"minimal ralign\">"+historico[index].description+"</p\><table\><tr\><td class=\"showQtd\"\><p class=\"minimal\">"+historico[index].quant+"un</p\></td\><td class=\"showVal\"\><p class=\"minimal\">R$"+historico[index].value+"</p\></td\><td class=\"showSubTt\"\><p class=\"minimal\">R$"+(historico[index].value*historico[index].quant).toFixed(2)+"</p\></td\></tr\></table\>";
+    return "<br><p class=\"minimal inline\">"+(index + 1).toString()+"</p><p class=\"minimal ralign fRight inline\">"+historico[index].barcode+"</p\><p></p><p class=\"minimal ralign \">"+historico[index].description+"</p\><table\><tr\><td class=\"showQtd\"\><p class=\"minimal\">"+historico[index].quant+"un</p\></td\><td class=\"showVal\"\><p class=\"minimal\">R$"+historico[index].value+"</p\></td\><td class=\"showSubTt\"\><p class=\"minimal\">R$"+(historico[index].value*historico[index].quant).toFixed(2)+"</p\></td\></tr\></table\>";
 }
 
 function killPopup(popupName)
