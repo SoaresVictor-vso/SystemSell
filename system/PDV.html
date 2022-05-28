@@ -30,7 +30,7 @@
         <div class="description" id="Description">
             <p class="minimal">...</p>
         </div>
-       
+
         <table class="functional">
             <tr>
                 <td class="historico">
@@ -38,13 +38,13 @@
                         <table>
                             <tr>
                                 <td>
-                                    <div  class="product" id="P1">                                        
+                                    <div  class="product" id="P1">
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <div  class="product" id="P2">    
+                                    <div  class="product" id="P2">
                                     </div>
                                 </td>
                             </tr>
@@ -72,22 +72,22 @@
                     <div class="stats">
                         <div class="show">
                             <p class="atrib">Valor Unitário</p>
-                            <p class="valueAtrib" id="ValUnit">R$0,00</p>                        
+                            <p class="valueAtrib" id="ValUnit">R$0,00</p>
                         </div>
                         <div class="show">
                             <p class="atrib">Quantidade</p>
-                            <p class="valueAtrib" id="Qtd">0un</p>                        
+                            <p class="valueAtrib" id="Qtd">0un</p>
                         </div>
                         <div class="show">
                             <p class="atrib">Subtotal</p>
-                            <p class="valueAtrib" id="SubTotal">R$0,00</p>                        
+                            <p class="valueAtrib" id="SubTotal">R$0,00</p>
                         </div>
                         <div class="show">
                             <p class="atrib">Valor total</p>
-                            <p class="valueAtrib" id="Total">R$0,00</p>                        
+                            <p class="valueAtrib" id="Total">R$0,00</p>
                         </div>
                     </div>
-                    
+
                 </td>
             </tr>
         </table>
@@ -114,7 +114,7 @@
 <div class="popup popupInactive" id="PopupFecharCompras">
     <div class="activeFecharCompras">
         <div class="fechar" id="CancelFecharCompras"><p>x</p></div>
-        
+
         <h2>Fechamento de Compra</h2>
         <table class="modoPagamento">
             <tr>
@@ -129,13 +129,13 @@
                 <td class="modoPagamento inProgress">cheque</td>
             </tr>
         </table>
-        <h3 class="vTotal">Valor total: R$</h3><h3 class="vTotal" id="ValorTotal">0,00</h3> 
+        <h3 class="vTotal">Valor total: R$</h3><h3 class="vTotal" id="ValorTotal">0,00</h3>
         <h3></h3>
-        <h3 class="desconto">Desconto R$</h3> 
-        <input type="number" name="desconto" id="Desconto" class="desconto" value="0">  
+        <h3 class="desconto">Desconto R$</h3>
+        <input type="number" name="desconto" id="Desconto" class="desconto" value="0">
         <h3></h3>
-        <h3 class="vTotal">Valor Final: R$</h3> <h3 class="vTotal" id="ValorComDesconto">0,00</h3>  
-        
+        <h3 class="vTotal">Valor Final: R$</h3> <h3 class="vTotal" id="ValorComDesconto">0,00</h3>
+
     </div>
 </div>
 
@@ -148,17 +148,17 @@
                 <td><input type="button" value="Fechar Compra" class="nocadFinalBtn" id="nocadFinalBtnSeguir" onclick="forceFecharCompra()"></td>
                 <td><input type="button" value="Ver Lista" class="nocadFinalBtn" id="nocadFinalBtnVer" onclick="abrirLista()"></td>
             </td>
-            
-            
+
+
         </table>
-        
+
     </div>
 </div>
 
 <div class="contPopup popupInactive" id="PopupLista">
     <div class="lista">
         <h2>Lista de produtos</h2>
-        
+
         <div class="listaExibida" id="ListaExibida">
         </div>
 
@@ -167,8 +167,8 @@
                 <td><input type="button" value="Fechar Compra" class="listaBtn" id="ListaSeguir" onclick="forceFecharCompra()"></td>
                 <td><input type="button" value="Voltar" class="listaBtn" id="ListaVoltar" onclick="fecharLista()"></td>
             </td>
-            
-            
+
+
         </table>
     </div>
 </div>

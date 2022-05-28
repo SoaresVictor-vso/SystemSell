@@ -1,3 +1,5 @@
+
+
 let db;
 let soma = 0.00;
 
@@ -19,20 +21,6 @@ let historico = [
 
 loadHist();
 
-/*document.getElementById("P1").innerHTML = "";
-document.getElementById("P2").innerHTML = "";
-document.getElementById("P3").innerHTML = "";
-document.getElementById("P4").innerHTML = "";*/
-
-
-
-fetch('../FakeDb/Products.json').then(function(resp) {
-    return resp.json();
-})
-.then(function(data) {
-    db = data;
-    console.log(data);
-});
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("CancelFecharCompras").addEventListener("mousedown", () =>{
@@ -110,54 +98,46 @@ document.addEventListener('click',() => {
 
 
 
-
-
-function loadProduct()
+function setProduct(data, cod, quant)
 {
-    let enter;
-    let quant;
-    let cod;
-    let val;
-    let desc = "";
-    let sub;
-    let sstr;
     
-    
-    enter = readBarcode();
-
-    sstr = getQuantCod(enter);
-    quant = sstr[0];
-    cod = sstr[1];
-
-    db.forEach(element => {
-        if(element.Barcode == cod)
-        {
-            val = JSON.stringify(element.Value);
-            desc = JSON.stringify(element.Desciption);
-        }
-    });
-
-    if(val == undefined)
+    if(data.erro)
     {
+        console.log( "erro == " + data.erro)
         nocadException(cod, quant);
     }
     else
     {   
-        while(val.includes("\""))
+        
+        
+        let val = data.Value;
+        let desc = data.Description;
+
+        /*while(val.includes("\""))
         {
             val = val.replace("\"",'');
-        }
+        }*/
 
-        sub = parseFloat(val) * parseFloat(quant);
+        let sub = parseFloat(val) * parseFloat(quant);
         soma += sub;
-        desc = desc.substring(1, desc.length - 1);
-        
         write(val, quant, sub, soma, desc);
         
 
         historico.push(new prod(cod, desc, parseFloat(val).toFixed(2), parseFloat(quant).toFixed(2)));
         loadHist();
     }
+}
+
+function loadProduct()
+{
+    const enter = readBarcode();
+    const sstr = getQuantCod(enter);
+    const quant = sstr[0];
+    const cod = sstr[1];
+
+    getProduct(cod).then((r) => {
+        setProduct(r, cod, quant)
+    }); 
 }
 
 function loadList()
@@ -276,11 +256,13 @@ function getQuantCod(enter)
 function nocadException(cod, quant)
 {
     //ativa a popup de alerta e adiciona um produto ao historico
+    const name = "Produto sem Cadastro";
     nocadAlert = true;
-    awakePopup("PopupSemCadastro");
     nocadPopup = true;
-
-    historico.push(new prod(cod, "Produto sem Cadastro", 0.00, quant));
+    historico.push(new prod(cod, name, 0.00, quant));
+    
+    awakePopup("PopupSemCadastro");
+    write(0.00, quant, 0.00, soma, name)
     loadHist();
 }
 
