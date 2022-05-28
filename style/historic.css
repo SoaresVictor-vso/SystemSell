@@ -1,0 +1,36 @@
+td.list
+{
+    padding-left: 5vw;
+    width: 30vw; 
+}
+
+div.product
+{
+    border: 3px;
+    border-style: solid;
+    border-color: var(--detail-green);
+    border-top: none;
+    border-right: none;
+
+    font-size: 2.5vh;
+    height: 13vh;
+}
+
+td.showQtd
+{
+    width:  10vw;
+    text-align: left;
+}
+
+td.showVal
+{
+    width: 20vw; 
+    text-align: center;
+}
+
+td.showSubTt
+{
+    text-align: right;
+    width:20vw; 
+}
+

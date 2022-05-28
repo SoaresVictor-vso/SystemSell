@@ -1,0 +1,39 @@
+.popupActive
+{
+    display: flex;
+}
+
+.popupInactive
+{
+    display: none;
+}
+
+.popupContainer
+{
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    justify-content: center;
+    align-items: center;
+}
+
+h2.alerta
+{
+    padding-top: 2vh;
+    font-size: 7vh;
+}
+
+p.alerta
+{
+    font-size: 4vh;
+}
+
+.alerta
+{
+    text-align: center;
+    vertical-align: center;
+    color: var(--detail-red);
+}

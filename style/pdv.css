@@ -1,32 +1,3 @@
-* { margin: 0; padding: 0; } 
-* {font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;}
-html { overflow: hidden; }
-:root
-{
-    --background: #101010;
-    --text-default: #dfdfdf;
-    --detail-green: #63e9a6;
-    --detail-purple: #a663e9;
-    --detail-red: #e64c4c;
-}
-body
-{
-    background-color: var(--background);
-    color: var(--text-default);
-}
-
-div.menu
-{
-    width: 100%;
-    height: 8vh;
-    background-color: #000000;
-
-}
-div.hline
-{
-    width: 100%;
-}
-
 input.barcode
 {
     margin-right: 10vw;
@@ -51,13 +22,6 @@ input.barcode
     text-align: right;  
 }
 
-p.minimal
-{
-    font-family: 'Courier New', Courier, monospace;
-    padding-bottom: 0.5vh;
-    padding-right: 1vw;
-}
-
 div.description
 {
     padding-right: 11vw;
@@ -67,209 +31,14 @@ div.description
     font-size: 4vh;    
 }
 
-
-
-
-td.historico
-{
-    padding-left: 5vw;
-    width: 30vw; 
-}
-
-td.showQtd
-{
-    width:  10vw;
-    text-align: left;
-}
-
-td.showVal
-{
-    width: 20vw; 
-    text-align: center;
-}
-
-td.showSubTt
-{
-    text-align: right;
-    width:20vw; 
-}
-
-
-
-div.product
-{
-    border: 3px;
-    border-style: solid;
-    border-color: var(--detail-green);
-    border-top: none;
-    border-right: none;
-
-    font-size: 2.5vh;
-    height: 13vh;
-}
-
-.ralign
-{
-    text-align: right;
-}
-
-.show
-{
-    border: 3px;
-    border-left: 0px;
-    border-bottom: 0px;
-    height: 13vh;
-
-    width: 30vw;
-    
-    text-align: left;
-    border-style: solid;
-    border-color: var(--detail-purple);
-
-    margin-right: 10vw;
-
-    float: right;
-    
-}
-
-p.atrib
-{
-    font-size: 3vh;
-}
-
-p.valueAtrib
-{
-    padding-top: 2.5vh;
-    padding-right: 1vw;
-    text-align: right;
-    font-size: 5vh;
-}
-
-
-
-table.functional
+table.listAndStats
 {
     margin-top: 5vh;
 }
 
-div.middle
+.middle
 {
     width: 18vw;
-}
-
-a
-{
-    padding-left: 10vw;
-    text-decoration: none;
-    color: var(--text-default);
-}
-
-.popupActive
-{
-    display: flex;
-}
-
-.popupInactive
-{
-    display: none;
-}
-
-.popup
-{
-    background-color: rgba(0, 0, 0, 0.5);
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    justify-content: center;
-    align-items: center;
-}
-
-.msgPopup
-{
-    background-color: var(--background);
-    width: 30vw;
-    height: 20vh;
-    border-radius: 10px;
-    border:5px;
-    border-style:solid ;
-    border-color: var(--detail-red);
-}
-
-h2.alerta
-{
-    padding-top: 2vh;
-    font-size: 7vh;
-}
-
-p.alerta
-{
-    font-size: 4vh;
-}
-
-.alerta
-{
-    text-align: center;
-    vertical-align: center;
-    color: var(--detail-red);
-}
-
-.redText
-{
-    color: var(--detail-red);
-}
-
-.fRight
-{
-    float: right;
-}
-
-.activeFecharCompras
-{
-    position: relative;
-    border: 4px;
-    border-style: solid;
-    border-color: var(--detail-purple);
-    padding-top: 20px;
-    height: auto;
-    width: 30vw;
-    background-color: var(--background);
-    
-    text-align: center;
-    vertical-align: center;
-}
-
-table.modoPagamento
-{
-    margin-top: 30px;
-    margin-bottom: 30px;
-    margin-left: 20%;
-    width: 60%;
-}
-
-.inProgress
-{
-    background-color: var(--detail-red);
-}
-
-.ok
-{
-    background-color: var(--detail-green);
-
-    cursor: pointer;
-}
-
-td.modoPagamento
-{
-    margin: 1vw;
-    width: 8vw;
-    height: 5vw;
-    border: 5px;
-    border-style: solid;
-    border-color: #000;
-    border-radius: 10px;
-    color: var(--background);
 }
 
 td.void
@@ -278,75 +47,16 @@ td.void
     width: 5px;
 }
 
-h3.desconto
-{
-    margin-top: 10px;
-    display: inline-block;
-}
 
-input.desconto
-{
-    margin-top: 10px;
-    margin-bottom: 40px;
-    display: inline-block;
-    height: 2em;
-    width: 6em;
-    font-size: large;
-}
 
-h3.vTotal
-{
-    display: inline-block;
-    padding-bottom: 30px;
-}
 
-div.fechar
-{
-    width: 20px;
-    height: 20px;
 
-    background-color: var(--detail-red);
-     text-align: center;
-    border: var(--detail-red);
-    border-style: solid;
-    border-radius: 0;
-    display: block;
-    position: absolute;
-    top: 0px;
-    right: 0px;
 
-    cursor: pointer;
-}
 
-.menuOpt
-{
-    
-    height: 7.7vh;
-    margin-left: 20px;
-    padding-left: 20px;
-    border: 0px;
-    border-left: 2px;
-    
-    border-color: var(--text-default);
-    border-style: solid;
-    display: inline-block;
-    text-align: center;
 
-    cursor: pointer;
-}
 
-.menuOpt h4
-{
-    padding-top: 1.5vh;
-}
 
-.hline
-{
-    height: 0.5vh;
-    width: 100vw;
 
-    background-color: var(--text-default);
-}
 
 .msgFinalNocad
 {
@@ -411,8 +121,8 @@ div.lista
     border-color: var(--text-default);
     
     text-align: center;
-    background-color: var(--background);
-    color: var(--text-default);
+    /* background-color: var(--background); */
+    /* color: var(--text-default); */
 }
 
 input.listaBtn
@@ -445,7 +155,3 @@ input.listaBtn
     text-align: left;
 }
 
-.inline
-{
-    display: inline-block;
-}

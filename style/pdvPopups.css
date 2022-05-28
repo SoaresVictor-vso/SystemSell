@@ -1,0 +1,10 @@
+.noCadContent
+{
+    background-color: var(--background);
+    width: 30vw;
+    height: 20vh;
+    border-radius: 10px;
+    border:5px;
+    border-style:solid ;
+    border-color: var(--detail-red);
+}

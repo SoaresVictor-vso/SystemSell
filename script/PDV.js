@@ -23,10 +23,10 @@ loadHist();
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById("CancelFecharCompras").addEventListener("mousedown", () =>{
-        killPopup("PopupFecharCompras");
+    document.getElementById("CancelCloseBuy").addEventListener("mousedown", () =>{
+        killPopup("PopupFinalizeBuy");
         lock = false;
-        document.getElementById("Desconto").value = 0.00;
+        document.getElementById("DiscountValue").value = 0.00;
     })
     document.getElementById("PgtoDin").addEventListener('mousedown', () => {
         pagamentoDinheiro();
@@ -61,9 +61,9 @@ document.addEventListener('keyup', (e) => {
         {
             fecharLista();
         }
-        killPopup("PopupFecharCompras");
+        killPopup("PopupFinalizeBuy");
         lock = false;
-        document.getElementById("Desconto").value = 0;
+        document.getElementById("DiscountValue").value = 0;
     }
     
     if(lock)
@@ -77,7 +77,7 @@ document.addEventListener('keyup', (e) => {
     if(nocadPopup)
     {
         console.log("tecla")
-        killPopup("PopupSemCadastro");
+        killPopup("NoCadPopup");
         nocadPopup = false;
     }
   })
@@ -87,7 +87,7 @@ document.addEventListener('click',() => {
     {
         
     console.log("pop it up")
-        killPopup("PopupSemCadastro");
+        killPopup("NoCadPopup");
         nocadPopup = false;
     }
     if(lock)
@@ -179,13 +179,13 @@ function fecharLista()
 
 function pagamentoDinheiro()
 {
-    killPopup("PopupFecharCompras");
+    killPopup("PopupFinalizeBuy");
     lock = false;
     historico = [];
     loadHist();
     soma = 0.00;
     write(0.00,0.00,0.00,soma, "...");
-    document.getElementById("Desconto").value = 0.00;
+    document.getElementById("DiscountValue").value = 0.00;
     nocadAlert = false;
 }
 
@@ -214,17 +214,17 @@ function forceFecharCompra()
     {
         killPopup("PopupFinalNocad");
     }
-    awakePopup("PopupFecharCompras");
+    awakePopup("PopupFinalizeBuy");
     lock = true;
     atualizarValorFinal();
 }
 
 function atualizarValorFinal()
 {
-    desconto = parseFloat(document.getElementById("Desconto").value).toFixed(2);
+    desconto = parseFloat(document.getElementById("DiscountValue").value).toFixed(2);
     final = (soma - desconto).toFixed(2);
-    document.getElementById("ValorTotal").innerHTML = soma.toFixed(2);
-    document.getElementById("ValorComDesconto").innerHTML = final;
+    document.getElementById("ProductsSum").innerHTML = soma.toFixed(2);
+    document.getElementById("FinalValue").innerHTML = final;
 }
 
 function write(val, quant, sub, soma, desc)
@@ -261,7 +261,7 @@ function nocadException(cod, quant)
     nocadPopup = true;
     historico.push(new prod(cod, name, 0.00, quant));
     
-    awakePopup("PopupSemCadastro");
+    awakePopup("NoCadPopup");
     write(0.00, quant, 0.00, soma, name)
     loadHist();
 }
@@ -314,7 +314,7 @@ function writeProductFromIndex(index, box)
             document.getElementById("P"+box).classList.remove("redText");
         }
     }
-    return "<br><p class=\"minimal inline\">"+(index + 1).toString()+"</p><p class=\"minimal ralign fRight inline\">"+historico[index].barcode+"</p\><p></p><p class=\"minimal ralign \">"+historico[index].description+"</p\><table\><tr\><td class=\"showQtd\"\><p class=\"minimal\">"+historico[index].quant+"un</p\></td\><td class=\"showVal\"\><p class=\"minimal\">R$"+historico[index].value+"</p\></td\><td class=\"showSubTt\"\><p class=\"minimal\">R$"+(historico[index].value*historico[index].quant).toFixed(2)+"</p\></td\></tr\></table\>";
+    return "<br><p class=\"minimal inline\">"+(index + 1).toString()+"</p><p class=\"minimal ralign rfloat inline\">"+historico[index].barcode+"</p\><p></p><p class=\"minimal ralign \">"+historico[index].description+"</p\><table\><tr\><td class=\"showQtd\"\><p class=\"minimal\">"+historico[index].quant+"un</p\></td\><td class=\"showVal\"\><p class=\"minimal\">R$"+historico[index].value+"</p\></td\><td class=\"showSubTt\"\><p class=\"minimal\">R$"+(historico[index].value*historico[index].quant).toFixed(2)+"</p\></td\></tr\></table\>";
 }
 
 function killPopup(popupName)

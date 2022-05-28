@@ -1,0 +1,30 @@
+.stat
+{
+    border: 3px;
+    border-left: 0px;
+    border-bottom: 0px;
+    height: 13vh;
+
+    width: 30vw;
+    
+    text-align: left;
+    border-style: solid;
+    border-color: var(--detail-purple);
+
+    margin-right: 10vw;
+
+    float: right; 
+}
+
+p.atrib
+{
+    font-size: 3vh;
+}
+
+p.valueAtrib
+{
+    padding-top: 2.5vh;
+    padding-right: 1vw;
+    text-align: right;
+    font-size: 5vh;
+}

@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/base.css">
+    <link rel="stylesheet" href="../style/menuBar.css">
+    <link rel="stylesheet" href="../style/historic.css">
+    <link rel="stylesheet" href="../style/stats.css">
     <link rel="stylesheet" href="../style/pdv.css">
     <title>PDV</title>
 </head>
@@ -13,76 +17,72 @@
         <div class="menu">
             <table>
                 <tr>
-                    <td class="menuOpt" id="funcF4">
+                    <td class="menuOption" id="funcF4">
                         <h4>Fechar compra</h4>
                         <p>(F4)</p>
                     </td>
-                    <td class="menuOpt"></td>
+                    <td class="menuOption"></td>
                 </tr>
             </table>
-            <div class="hline"></div>
+            <div class="menuHline"></div>
         </div>
 
-        <div class="entrada">
-            <input class="barcode" type="text" placeholder="Codigo de barras" id="Barcode">
-        </div>
+        
+        <input class="barcode" type="text" placeholder="Codigo de barras" id="Barcode">
+        
 
         <div class="description" id="Description">
             <p class="minimal">...</p>
         </div>
 
-        <table class="functional">
+        <table class="listAndStats">
             <tr>
-                <td class="historico">
+                <td class="list">
                     <div >
                         <table>
                             <tr>
                                 <td>
-                                    <div  class="product" id="P1">
-                                    </div>
+                                    <div  class="product" id="P1"></div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <div  class="product" id="P2">
-                                    </div>
+                                    <div  class="product" id="P2"></div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <div  class="product" id="P3">
-                                    </div>
+                                    <div  class="product" id="P3"></div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <div  class="product" id="P4">
-                                    </div>
+                                    <div  class="product" id="P4"></div>
                                 </td>
                             </tr>
                         </table>
                     </div>
                 </td>
-                <td>
-                    <div class="middle">
+                <td class="middle">
+                    <div>
                         <p></p>
                     </div>
                 </td>
-                <td>
-                    <div class="stats">
-                        <div class="show">
+                <td class="stats">
+                    <div>
+                        <div class="stat">
                             <p class="atrib">Valor Unitário</p>
                             <p class="valueAtrib" id="ValUnit">R$0,00</p>
                         </div>
-                        <div class="show">
+                        <div class="stat">
                             <p class="atrib">Quantidade</p>
                             <p class="valueAtrib" id="Qtd">0un</p>
                         </div>
-                        <div class="show">
+                        <div class="stat">
                             <p class="atrib">Subtotal</p>
                             <p class="valueAtrib" id="SubTotal">R$0,00</p>
                         </div>
-                        <div class="show">
+                        <div class="stat">
                             <p class="atrib">Valor total</p>
                             <p class="valueAtrib" id="Total">R$0,00</p>
                         </div>
@@ -100,46 +100,55 @@
         <a href="../index.html"> Voltar para o menu.</a>
 
     </div>
+
     <script src="/script/PDV.js"></script>
     <script src="/script/linker.js"></script>
+
+    
+    <link rel="stylesheet" href="../style/basePopup.css">
+    <link rel="stylesheet" href="../style/pdvPopups.css">
+    <link rel="stylesheet" href="../style/pdvPopupFinalize.css">
+
 </body>
 
-<div class="popup popupInactive" id="PopupSemCadastro">
-    <div class="msgPopup">
+<div class="popupContainer popupInactive" id="NoCadPopup">
+    <div class="noCadContent">
         <h2 class="alerta">Alerta</h2>
         <p class="alerta">Produto não cadastrado!</p>
     </div>
 </div>
 
-<div class="popup popupInactive" id="PopupFecharCompras">
-    <div class="activeFecharCompras">
-        <div class="fechar" id="CancelFecharCompras"><p>x</p></div>
+<div class="popupContainer popupInactive" id="PopupFinalizeBuy">
+    <div class="finalizeBuyContent">
+        <div class="closeFakeButton" id="CancelCloseBuy"><p>x</p></div>
 
         <h2>Fechamento de Compra</h2>
-        <table class="modoPagamento">
+        <table class="payMode">
             <tr>
-                <td class="modoPagamento ok" id="PgtoDin">dinheiro</td>
+                <td class="payMode ok" id="PgtoDin">dinheiro</td>
                 <td class="void"></td>
-                <td class="modoPagamento inProgress">cartao</td>
+                <td class="payMode inProgress">cartao</td>
             </tr>
                 <td class="void"></td>
             <tr>
-                <td class="modoPagamento inProgress">pix</td>
+                <td class="payMode inProgress">pix</td>
                 <td class="void"></td>
-                <td class="modoPagamento inProgress">cheque</td>
+                <td class="payMode inProgress">cheque</td>
             </tr>
         </table>
-        <h3 class="vTotal">Valor total: R$</h3><h3 class="vTotal" id="ValorTotal">0,00</h3>
+        <h3 class="totalValue">Valor total: R$</h3><h3 class="totalValue" id="ProductsSum">0,00</h3>
         <h3></h3>
-        <h3 class="desconto">Desconto R$</h3>
-        <input type="number" name="desconto" id="Desconto" class="desconto" value="0">
+        <h3 class="discount">Desconto R$</h3>
+        <input type="number" name="discount" id="DiscountValue" class="discount" value="0">
         <h3></h3>
-        <h3 class="vTotal">Valor Final: R$</h3> <h3 class="vTotal" id="ValorComDesconto">0,00</h3>
+        <h3 class="totalValue">Valor Final: R$</h3> <h3 class="totalValue" id="FinalValue">0,00</h3>
 
     </div>
 </div>
 
-<div class="popup popupInactive" id="PopupFinalNocad">
+
+<!-- REFATORAR CSS REFERENTE ÀS PARTES ABAIXO DESTE COMENTÁRIO -->
+<div class="popupContainer popupInactive" id="PopupFinalNocad">
     <div class="msgFinalNocad">
         <h2 class="alerta">Alerta</h2>
         <p class="alerta">Fecahr compra com produto sem cadastro?</p>

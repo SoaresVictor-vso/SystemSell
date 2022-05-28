@@ -1,0 +1,37 @@
+div.menu
+{
+    width: 100%;
+    height: 8vh;
+    background-color: #000000;
+
+}
+
+div.menuHline
+{
+    width: 100%;
+    height: 0.5vh;
+    width: 100vw;
+    background-color: var(--text-default);
+}
+
+.menuOption
+{
+    
+    height: 7.7vh;
+    margin-left: 20px;
+    padding-left: 20px;
+    border: 0px;
+    border-left: 2px;
+    
+    border-color: var(--text-default);
+    border-style: solid;
+    display: inline-block;
+    text-align: center;
+
+    cursor: pointer;
+}
+
+.menuOption h4
+{
+    padding-top: 1.5vh;
+}
