@@ -1,11 +1,14 @@
-const backUrl = "http://localhost:5000/"
+const backUrl = window.location.href;
+let parts = backUrl.split("/", [4]);
+console.log(parts)
+
 
 const getProduct = async function(cod)
 {
     let ret
     try 
     {
-        await fetch(backUrl + "req/?cod=" + cod).then((data) => data.json()).then((data) =>{
+        await fetch(parts[0] + "//" + parts[2]+  "/req/?cod=" + cod).then((data) => data.json()).then((data) =>{
             ret = data;
          })
     } 
