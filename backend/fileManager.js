@@ -2,8 +2,11 @@ const path = require('path');
 const fs = require('fs');
 
 
-const getPath = function(end, basePath)
+const getPath = function(end)
 {
+    let basePath = String(__dirname);
+    basePath = basePath.split("\\backend", 1)[0];
+    
     return setPath(basePath, getName(end));
 }
 
@@ -41,7 +44,7 @@ const setPath = function (basePath, fileName)
     }
     else if(!allowed)
     { 
-        return null
+        return "";
     }
     else
     {
