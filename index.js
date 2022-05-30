@@ -6,7 +6,10 @@ const { getPath } = require('./backend/fileManager');
 
 const $PORT = process.env.PORT || 5000;
 
+
+
 http.createServer((req,res) => {
+    const basepath = String(__dirname) || "app";
     const end = req.url;
 
     if(end.includes("/req"))
@@ -15,7 +18,7 @@ http.createServer((req,res) => {
     }
     else
     {
-        return loadFile(getPath(end), res);
+        return loadFile(getPath(end, basepath), res);
     }
 
 }).listen($PORT, console.log("Server up at port " + $PORT));
