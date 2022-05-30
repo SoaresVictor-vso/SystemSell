@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "test": "jest",
-    "loopingTest" : "jest --watchAll",
+    "loopingTest": "jest --watchAll",
     "api": "nodemon api/main.js"
   },
   "repository": {
@@ -21,10 +21,11 @@
   },
   "homepage": "https://github.com/SoaresVictor-vso/SystemSell#readme",
   "devDependencies": {
-    "nodemon": "^2.0.16",
-    "jest": "28.1.0"
+    "jest": "28.1.0",
+    "nodemon": "^2.0.16"
   },
   "dependencies": {
-    "axios": "^0.27.2"
+    "axios": "^0.27.2",
+    "heroku": "^7.60.2"
   }
 }
