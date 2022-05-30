@@ -4,6 +4,8 @@ const path = require('path');
 const reqManager = require('./backend/reqManager');
 const { getPath } = require('./backend/fileManager');
 
+const port = process.env.port || 5000;
+
 http.createServer((req,res) => {
     const end = req.url;
 
@@ -16,7 +18,7 @@ http.createServer((req,res) => {
         return loadFile(getPath(end), res);
     }
 
-}).listen(5000, console.log("Server up"));
+}).listen(port, console.log("Server up at port " + port));
 
 function loadFile(filePath, res)
 {

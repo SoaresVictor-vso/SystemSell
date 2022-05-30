@@ -1,0 +1,10 @@
+.finalNocadContent
+{
+    background-color: var(--background);
+    width: 40vw;
+    height: 40vh;
+    border-radius: 10px;
+    border:5px;
+    border-style:solid ;
+    border-color: var(--detail-red);
+}

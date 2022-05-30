@@ -18,18 +18,18 @@
             <table>
                 <tr>
                     <td class="menuOption" id="funcF4">
-                        <h4>Fechar compra</h4>
-                        <p>(F4)</p>
+                        <div onclick="finalizeBuy()">
+                            <h4>Fechar compra</h4>
+                            <p>(F4)</p>
+                        </div>
                     </td>
                     <td class="menuOption"></td>
                 </tr>
             </table>
             <div class="menuHline"></div>
         </div>
-
         
         <input class="barcode" type="text" placeholder="Codigo de barras" id="Barcode">
-        
 
         <div class="description" id="Description">
             <p class="minimal">...</p>
@@ -92,26 +92,30 @@
             </tr>
         </table>
 
-
-
         <br>
         <br>
         <br>
         <a href="../index.html"> Voltar para o menu.</a>
-
     </div>
 
-    <script src="/script/PDV.js"></script>
+    
     <script src="/script/linker.js"></script>
+    <script src="/script/pdvWriters.js"></script>
+    <script src="/script/pdvPopup.js"></script>
+    <script src="/script/PDV.js"></script>
+    <script src="/script/pvdLoadProducts.js"></script>
+    <script src="/script/pdvPaymode.js"></script>
 
     
     <link rel="stylesheet" href="../style/basePopup.css">
-    <link rel="stylesheet" href="../style/pdvPopups.css">
+    <link rel="stylesheet" href="../style/pdvPopupNoCad.css">
     <link rel="stylesheet" href="../style/pdvPopupFinalize.css">
+    <link rel="stylesheet" href="../style/pdvPopupFinalNoCad.css">
+    <link rel="stylesheet" href="../style/pdvPopupList.css">
 
 </body>
 
-<div class="popupContainer popupInactive" id="NoCadPopup">
+<div class="popupContainer popupInactive" id="PopupNoCad">
     <div class="noCadContent">
         <h2 class="alerta">Alerta</h2>
         <p class="alerta">Produto não cadastrado!</p>
@@ -120,12 +124,12 @@
 
 <div class="popupContainer popupInactive" id="PopupFinalizeBuy">
     <div class="finalizeBuyContent">
-        <div class="closeFakeButton" id="CancelCloseBuy"><p>x</p></div>
+        <div class="closeFakeButton" id="CancelCloseBuy" onclick="cancellFinalize()"><p>x</p></div>
 
         <h2>Fechamento de Compra</h2>
         <table class="payMode">
             <tr>
-                <td class="payMode ok" id="PgtoDin">dinheiro</td>
+                <td class="payMode ok" id="PgtoDin" onclick="pagamentoDinheiro()">dinheiro</td>
                 <td class="void"></td>
                 <td class="payMode inProgress">cartao</td>
             </tr>
@@ -147,38 +151,32 @@
 </div>
 
 
-<!-- REFATORAR CSS REFERENTE ÀS PARTES ABAIXO DESTE COMENTÁRIO -->
 <div class="popupContainer popupInactive" id="PopupFinalNocad">
-    <div class="msgFinalNocad">
+    <div class="finalNocadContent">
         <h2 class="alerta">Alerta</h2>
         <p class="alerta">Fecahr compra com produto sem cadastro?</p>
         <table>
             <td>
-                <td><input type="button" value="Fechar Compra" class="nocadFinalBtn" id="nocadFinalBtnSeguir" onclick="forceFecharCompra()"></td>
-                <td><input type="button" value="Ver Lista" class="nocadFinalBtn" id="nocadFinalBtnVer" onclick="abrirLista()"></td>
+                <td><input type="button" value="Fechar Compra" class="finalNoCadBtn" id="finalNoCadBtnSeguir" onclick="forceFinalizeBuy()"></td>
+                <td><input type="button" value="Ver Lista" class="finalNoCadBtn" id="finalNoCadBtnVer" onclick="openList()"></td>
             </td>
-
-
         </table>
-
     </div>
 </div>
 
-<div class="contPopup popupInactive" id="PopupLista">
-    <div class="lista">
+<div class="contPopup popupInactive" id="PopupProductList">
+    <div class="productList">
         <h2>Lista de produtos</h2>
 
-        <div class="listaExibida" id="ListaExibida">
-        </div>
+        <div class="listElements" id="ListElements"></div>
 
         <table>
             <td>
-                <td><input type="button" value="Fechar Compra" class="listaBtn" id="ListaSeguir" onclick="forceFecharCompra()"></td>
-                <td><input type="button" value="Voltar" class="listaBtn" id="ListaVoltar" onclick="fecharLista()"></td>
+                <td><input type="button" value="Fechar Compra" class="listBtn" id="BtnFinalizeBuy" onclick="forceFinalizeBuy()"></td>
+                <td><input type="button" value="Voltar" class="listBtn" id="BtnBack" onclick="closeList()"></td>
             </td>
-
-
         </table>
     </div>
 </div>
+
 </html>
