@@ -10,7 +10,6 @@ dotenv.config();
 
 
 http.createServer((req,res) => {
-    //const basepath = String(__dirname) || "app";
     const end = req.url;
 
     if(end.includes("/req"))
@@ -26,22 +25,27 @@ http.createServer((req,res) => {
 
 function loadFile(filePath, res)
 {
-    try
+
+    if(filePath != "") 
     {
-        fs.readFile(filePath, (err, content) => {
-            if(err) {
-                throw err;
-                return;
-            }
-            else
-            {
-                return res.end(content);
-            }
-        })
+        try
+        {
+            fs.readFile(filePath, (err, content) => {
+                if(err) {
+                    throw err;
+                    return;
+                }
+                else
+                {
+                    return res.end(content);
+                }
+            })
+        }
+        catch (error)
+        {
+            return console.log(error);
+            
+        }
     }
-    catch (error)
-    {
-        return console.log(error);
-        
-    }
+    
 }
