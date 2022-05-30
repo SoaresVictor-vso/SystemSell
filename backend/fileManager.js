@@ -6,6 +6,7 @@ const getPath = function(end)
 {
     let basePath = String(__dirname);
     basePath = basePath.split("\\backend", 1)[0];
+
     
     return setPath(basePath, getName(end));
 }
@@ -44,13 +45,14 @@ const setPath = function (basePath, fileName)
     }
     else if(!allowed)
     { 
-        return "";
+        filePath = "";
     }
     else
     {
         filePath = path.join(basePath, fileName);
     }
-
+    
+    console.log(filePath);
     return filePath;
 }
 
