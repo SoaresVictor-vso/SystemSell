@@ -27,7 +27,7 @@ const getName = function(end)
 
 const setPath = function (basePath, fileName)
 {
-    const allowedFileTypes = ["", ".html", ".css", ".js"]
+    const allowedFileTypes = ["", ".html", ".css", ".js", ".ico"]
     const extension = path.extname(fileName);
     const allowed = allowedFileTypes.find(item => item == extension)
 
