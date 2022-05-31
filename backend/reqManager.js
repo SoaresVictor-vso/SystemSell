@@ -1,12 +1,12 @@
 const URL = require('url');
 const axios = require('axios');
-
-
+const basePath = API_URL + "?op=0&cod=";
+console.log(basePath)
 
 const getProduct = async function(cod)
 {
-    const basePath = API_URL + "?op=0&cod=";
-    console.log(basePath + cod)
+    
+    
     const {data} = await axios(basePath + cod)
     return data;
     
@@ -21,6 +21,7 @@ const preGetProduct = async function(cod)
     } 
     catch (error)
     {
+        console.log(error)
         product = {erro : "requestFailed"};
     }
     return product;
