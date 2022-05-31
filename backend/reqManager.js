@@ -5,8 +5,9 @@ const axios = require('axios');
 
 const getProduct = async function(cod)
 {
-    console.log('http://localhost:3000/?op=0&cod=' + cod)
-    const {data} = await axios('http://localhost:3000/?op=0&cod=' + cod)
+    const basePath = API_URL + "?op=0&cod=";
+    console.log(basePath + cod)
+    const {data} = await axios(basePath + cod)
     return data;
     
 }
