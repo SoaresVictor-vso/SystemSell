@@ -1,17 +1,13 @@
 const URL = require('url');
 const axios = require('axios');
 const basePath = process.env.API_URL + "?op=0&cod=";
-console.log(basePath)
 
 
 
 const getProduct = async function(cod)
 {
-    
-    
     const {data} = await axios(basePath + cod)
     return data;
-    
 }
 
 const preGetProduct = async function(cod)

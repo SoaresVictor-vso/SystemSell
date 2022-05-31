@@ -14,7 +14,7 @@ http.createServer((req,res) => {
 
     if(end.includes("/req"))
     {
-        console.log("<<<<<<<<<requiring at: " + end) + ">>>>>>>>>>>";
+        //console.log("<<<<<<<<<requiring at: " + end) + ">>>>>>>>>>>";
         reqManager.reqController(end).then((ret) => res.end(JSON.stringify(ret)))
     }
     else

@@ -61,7 +61,7 @@ const setPath = function (basePath, fileName)
         filePath = path.join(basePath, fileName);
     }
     
-    console.log(filePath);
+    //console.log(filePath);
     return filePath;
 }
 
