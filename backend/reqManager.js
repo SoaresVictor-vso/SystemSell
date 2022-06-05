@@ -8,7 +8,7 @@ const getProduct = async function(cod)
 {
     const reqOpt = {
         method: 'post',
-        url: 'http://localhost:3000/?op=1',
+        url: basePath,
         data: {
             barcode: cod
         }
