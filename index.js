@@ -1,21 +1,45 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const URL = require('url');
 const reqManager = require('./backend/reqManager');
 const { getPath } = require('./backend/fileManager');
 const dotenv = require('dotenv');
-
-const $PORT = process.env.PORT || 5000;
 dotenv.config();
 
+const $PORT = process.env.PORT || 5000;
 
-http.createServer((req,res) => {
+
+
+http.createServer(async (req,res) => {
     const end = req.url;
-
+    
     if(end.includes("/req"))
     {
-        //console.log("<<<<<<<<<requiring at: " + end) + ">>>>>>>>>>>";
-        reqManager.reqController(end).then((ret) => res.end(JSON.stringify(ret)))
+        
+        //----------------------------------------------------------------------
+        //buffer do body da requisição
+        const body = [];
+        let data;
+
+        //adiciona cada parte do corpo da requisição no buffer
+        try
+        {    
+            for await (const chunk of req) {
+                body.push(chunk);
+                console.log(data)
+            }
+            data = JSON.parse(Buffer.concat(body));
+        }
+        catch(err)
+        {
+            console.log("---" + err)
+        }
+        //----------------------------------------------------------------------
+        
+        reqManager.reqController(end, data).then((ret) => {
+            return res.end(JSON.stringify(ret))
+        })
     }
     else
     {

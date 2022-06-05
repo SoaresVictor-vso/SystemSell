@@ -1,7 +1,7 @@
 const write = function(item, soma)
 {
     //Carrega os valores corretos na coluna de status
-
+    
     document.getElementById("ValUnit").innerHTML = "R$" + item.value;
     document.getElementById("Qtd").innerHTML = item.quant + "un";
     document.getElementById("SubTotal").innerHTML = "R$" + (item.value * item.quant).toFixed(2);

@@ -1,12 +1,20 @@
 const URL = require('url');
 const axios = require('axios');
-const basePath = process.env.API_URL + "?op=0&cod=";
+const basePath = process.env.API_URL + "?op=1";
 
 
 
 const getProduct = async function(cod)
 {
-    const {data} = await axios(basePath + cod)
+    const reqOpt = {
+        method: 'post',
+        url: 'http://localhost:3000/?op=1',
+        data: {
+            barcode: cod
+        }
+    }
+    const {data} = await axios(reqOpt);
+    console.log(data)
     return data;
 }
 
@@ -25,11 +33,12 @@ const preGetProduct = async function(cod)
     return product;
 }
 
-const reqController = async function(url)
+const reqController = async function(end, data)
 {
-    const {cod, op} = URL.parse(url, true).query;
+    const {op, cod} = URL.parse(end, true).query;
+
     let ret;
-    if(cod && (!op || op==='0'))
+    if(op=='1')
     {
         ret = preGetProduct(cod)
     }

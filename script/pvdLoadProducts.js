@@ -13,6 +13,7 @@ const loadProduct = function()
 
 const setProduct = function(data, cod, quant)
 {
+    console.log(data)
     if(data.erro)
     {
         console.log( "erro == " + data.erro)
@@ -20,8 +21,8 @@ const setProduct = function(data, cod, quant)
     }
     else
     {   
-        let val = data.Value;
-        let desc = data.Description;
+        let val = data.value.replace('R$ ', '');
+        let desc = data.description;
         let sub = parseFloat(val) * parseFloat(quant);
         soma += sub;
 
