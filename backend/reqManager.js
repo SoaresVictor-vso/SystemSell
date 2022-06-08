@@ -7,7 +7,7 @@ const basePath = process.env.API_URL + "?op=1";
 const getProduct = async function(cod)
 {
     const reqOpt = {
-        method: 'post',
+        method: 'get',
         url: basePath,
         data: {
             barcode: cod
