@@ -2,9 +2,10 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const URL = require('url');
-const reqManager = require('./backend/reqManager');
+//const reqManager = require('./backend/reqManager');
 const { getPath } = require('./backend/fileManager');
 const dotenv = require('dotenv');
+//const { application } = require('express');
 dotenv.config();
 
 const $PORT = process.env.PORT || 5000;
@@ -13,12 +14,13 @@ const $PORT = process.env.PORT || 5000;
 
 http.createServer(async (req,res) => {
     const end = req.url;
+    console.log(end)
     
-    if(end.includes("/req"))
+    if(end.includes("api"))
     {
-        
+        return res.end(JSON.stringify(process.env.API_URL));
         //----------------------------------------------------------------------
-        //buffer do body da requisição
+        /*//buffer do body da requisição
         const body = [];
         let data;
 
@@ -39,7 +41,7 @@ http.createServer(async (req,res) => {
         
         reqManager.reqController(end, data).then((ret) => {
             return res.end(JSON.stringify(ret))
-        })
+        })*/
     }
     else
     {

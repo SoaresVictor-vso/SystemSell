@@ -5,5 +5,5 @@ let baseUrl = window.location.href;
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('toPdv').innerHTML = "<a href=\"" + baseUrl + "PDV\">Abrir PDV</a>"
+    document.getElementById('toPdv').innerHTML = "<a href=\"PDV\">Abrir PDV</a>"
 })

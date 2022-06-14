@@ -1,0 +1,21 @@
+form{
+    font-size: larger;
+    width: 50vw;
+    margin: auto;
+    margin-top: 35vh;
+    height: 30vh;
+    text-align: center;
+    align-items:center ;
+
+}
+
+label{
+    text-align: left;
+    width: 30vw;
+    margin: auto;
+}
+
+input{
+    height: 4vh;
+    width: 20vw;
+}
