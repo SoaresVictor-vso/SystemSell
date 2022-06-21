@@ -5,6 +5,7 @@ let nocadPopup = false;
 let nocadFinal = false;
 let finalizePopup = false;
 let showlist = false;
+let noPermission = false;
 
 //Algum produto sem cadastro passado?
 let nocadAlert = false;
@@ -94,9 +95,13 @@ const onKeyDown = function(e)
 {
     if(nocadPopup)
     {
-        console.log("tecla")
         killPopup("PopupNoCad");
         nocadPopup = false;
+    }
+    else if(noPermission)
+    {
+        killPopup("PopupPermissionDenied");
+        noPermission = false;
     }
 }
 
@@ -106,6 +111,11 @@ const onAnyclick = function()
     {
         killPopup("PopupNoCad");
         nocadPopup = false;
+    }
+    else if(noPermission)
+    {
+        killPopup("PopupPermissionDenied");
+        noPermission = false;
     }
     if(finalizePopup)
     {

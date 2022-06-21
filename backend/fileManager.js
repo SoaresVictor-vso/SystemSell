@@ -1,6 +1,28 @@
 const path = require('path');
+const axios = require('axios');
 const fs = require('fs');
+const dotenv = require('dotenv');
+dotenv.config();
 
+const apiUrl = process.env.API_URL;
+
+const getRole = function(token)
+{
+    const finalUrl = apiUrl + "/?op=22"
+    const body = {"token":token};
+    try
+    {
+        axios.post(finalUrl , JSON.stringify(body))
+        .then((r) => r.data)
+        .then((r) => {
+            console.log(r)
+        })
+    }
+    catch(err)
+    {
+        console.log(err);
+    }
+}
 
 const getPath = function(end)
 {
@@ -26,7 +48,7 @@ const getName = function(end)
 
     if(end === '/' || end ==='')
     {
-        fileName = "index.html";
+        fileName = "login.html";
     }
     else
     {

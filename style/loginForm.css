@@ -1,11 +1,26 @@
+
+
 form{
     font-size: larger;
-    width: 50vw;
+
+    padding-top: 2vh;
+    padding-bottom: 15vh;
+    width: 25vw;
     margin: auto;
-    margin-top: 35vh;
-    height: 30vh;
+    margin-top: 20vh;
+    height: 50vh;
     text-align: center;
     align-items:center ;
+
+    
+    border: 5px;
+    border-style: solid;
+    border-color: white;
+    border-radius: 0;
+
+    background-color: var(--background);
+
+    
 
 }
 
@@ -16,6 +31,56 @@ label{
 }
 
 input{
+    border-radius: 10px;
+    border: 3px;
+
+    background-color: var(--background-default);
+
+    color: var(--text-default);
+}
+
+input.loginButton{
+    height: 5vh;
+    width: 15vw;
+
+    font-size: 1vw;
+    
+    border-style: solid;
+    border-color: var(--text-default);
+    
+
+    cursor: pointer;
+
+}
+
+input.loginButton:hover{
+    background-color: #202020;
+    border-color: #808080;
+    color: #c0c0c0;
+}
+
+input.textEnter{
     height: 4vh;
     width: 20vw;
+    padding-left: 10px;
+    margin-bottom: 5vh;
+    margin-top: 2vh;
+
+    
+    border-style: solid;
+    border-color: var(--detail-purple);
+
+    border-bottom-color: #63e9a6;
+    border-left-color: #63e9a6;
+
+}
+
+.hide{
+    display: none;
+}
+
+
+
+div.placeholder{
+    height:  8vh;
 }

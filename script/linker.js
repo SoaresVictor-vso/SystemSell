@@ -1,14 +1,13 @@
 const backUrl = window.location.href;
+const token = localStorage.getItem('jwt');
 let apiUrl;
 let parts = backUrl.split("/", [4]);
-console.log(parts)
 
 
 const loadApiUrl = async function()
 {
     let ret;
     const url = parts[0] + "//" + parts[2] + "/api";
-    console.log(url)
     try
     {
         await fetch(url, {method: "GET"})
@@ -16,7 +15,7 @@ const loadApiUrl = async function()
     }
     catch (err)
     {
-        console.log("IMPOSSIVEL CONTECTAR AO SERVIDOR, RECARREGUE ESTA PAGINA");
+        console.error("IMPOSSIVEL CONTECTAR AO SERVIDOR, RECARREGUE ESTA PAGINA");
     }
     if(ret != null)
     {
@@ -30,20 +29,16 @@ const getProduct = async function(cod)
     if(apiUrl == null)
     {
         apiUrl = await loadApiUrl();
-        console.log(apiUrl)
     }
     let ret
 
-    //console.log('===>' + jBody);
-
     try 
     {
-        
         let reqBody = {
-            "token":"token",
+            "token":token,
             "barcode":cod
         }
-        console.log(reqBody)
+        //console.log(reqBody)
 
         await fetch(apiUrl + "/req/?op=1", {
             method: "POST",

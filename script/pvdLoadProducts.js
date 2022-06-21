@@ -13,11 +13,17 @@ const loadProduct = function()
 
 const setProduct = function(data, cod, quant)
 {
-    console.log(data)
     if(data.erro)
     {
-        console.log( "erro == " + data.erro)
-        nocadException(cod, quant);
+        console.warn( "Alert == " + data.erro)
+        if(data.erro == "permissionDenied")
+        {
+            permissionDeniedException();
+        }
+        else
+        {
+            nocadException(cod, quant);
+        }
     }
     else
     {   
@@ -77,4 +83,10 @@ const nocadException = function(cod, quant)
     awakePopup("PopupNoCad");
     write(nocadItem, soma)
     loadHist();
+}
+
+const permissionDeniedException = function(cod, quant)
+{
+    noPermission = true;
+    awakePopup("PopupPermissionDenied");
 }

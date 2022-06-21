@@ -6,15 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/base.css">
     <link rel="stylesheet" href="../style/loginForm.css">
+    <link rel="stylesheet" href="../style/basePopup.css">
     <title>Login</title>
 </head>
 <body>
     <form>
+        <label class="alerta hide" id="AlertCredentials">Usuário e/ou senha incorreto(s)</label><br>
+        <div class="placeholder" > </div>
         <label for="Username">Nome de Usuário:</label> <br>
-        <input type="text" name="Username" id="Username" placeholder="Digite seu nome de usuário"> <br><br>
+        <input type="text" name="Username" id="Username" placeholder="Digite seu nome de usuário" class="textEnter"> <br><br>
         <label for="Password">Senha: </label> <br>
-        <input type="password" name="Password" id="Password"> <br><br>
-        <input type="button" value="Login" onclick="login('test','patinho123')"> <br>
+        <input type="password" name="Password" id="Password" class="textEnter"> <br><br>
+        <input type="button" value="Login" onclick="login('test','patinho123')" class="loginButton"> <br>
     </form>
     
 

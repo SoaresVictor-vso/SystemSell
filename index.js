@@ -19,29 +19,6 @@ http.createServer(async (req,res) => {
     if(end.includes("api"))
     {
         return res.end(JSON.stringify(process.env.API_URL));
-        //----------------------------------------------------------------------
-        /*//buffer do body da requisição
-        const body = [];
-        let data;
-
-        //adiciona cada parte do corpo da requisição no buffer
-        try
-        {    
-            for await (const chunk of req) {
-                body.push(chunk);
-                console.log(data)
-            }
-            data = JSON.parse(Buffer.concat(body));
-        }
-        catch(err)
-        {
-            console.log("---" + err)
-        }
-        //----------------------------------------------------------------------
-        
-        reqManager.reqController(end, data).then((ret) => {
-            return res.end(JSON.stringify(ret))
-        })*/
     }
     else
     {
