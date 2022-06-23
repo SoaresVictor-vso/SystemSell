@@ -3,6 +3,15 @@ const token = localStorage.getItem('jwt');
 let apiUrl;
 let parts = backUrl.split("/", [4]);
 
+function send()
+{
+    apiUrl = loadApiUrl();
+
+
+
+    
+
+}
 
 const loadApiUrl = async function()
 {
@@ -24,20 +33,16 @@ const loadApiUrl = async function()
     return "http://localhost:3000";
 }
 
-const getProduct = async function(cod)
+const fetchQuery = function(query)
 {
-    if(apiUrl == null)
-    {
-        apiUrl = await loadApiUrl();
-    }
     let ret
-
+    const reqBody = {
+        "token":token,
+        "query":"SELECT * FROM produto"
+    }
     try 
     {
-        let reqBody = {
-            "token":token,
-            "barcode":cod
-        }
+        
         //console.log(reqBody)
 
         await fetch(apiUrl + "/req/?op=1", {
@@ -49,7 +54,6 @@ const getProduct = async function(cod)
             body: JSON.stringify(reqBody)
         }).then((r) => r.json()).then((r) => {
             ret = r;
-            console.log(r)
         })
         
     } 
@@ -59,6 +63,5 @@ const getProduct = async function(cod)
     }
     
     return ret;
+    
 }
-
-

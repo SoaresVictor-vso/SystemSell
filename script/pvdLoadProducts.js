@@ -27,7 +27,7 @@ const setProduct = function(data, cod, quant)
     }
     else
     {   
-        let val = data.value / 100;
+        let val = data.price / 100;
         let desc = data.description;
         let sub = parseFloat(val) * parseFloat(quant);
         soma += sub;

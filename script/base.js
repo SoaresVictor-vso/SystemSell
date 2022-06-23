@@ -7,3 +7,9 @@ let baseUrl = window.location.href;
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('toPdv').innerHTML = "<a href=\"PDV\">Abrir PDV</a>"
 })
+
+function logout()
+{
+    localStorage.setItem('jwt', null);
+    window.location.href = "/"
+}

@@ -1,0 +1,40 @@
+.query{
+    margin-top: 5vh;
+    margin-left: 10vw;
+    width: 80vw;
+    height: 40vh;
+
+    text-align: justify;
+
+    overflow-wrap: normal;
+}
+
+.btnExe{
+    margin-left: 80vw;
+    margin-top: 2vh;
+
+    height: 5vh;
+    width: 10vw;
+
+    
+    border: 2px;
+    border-style: solid;
+    
+    border-style: solid;
+    border-color: var(--detail-purple);
+
+    border-bottom-color: var(--detail-green);
+    border-left-color: var(--detail-green);
+
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+#output{
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-top: 5vh;
+
+
+}
