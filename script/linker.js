@@ -21,7 +21,10 @@ const loadApiUrl = async function()
     {
         return ret;
     }
-    return "http://localhost:3000";
+    else
+    {
+        return "http://localhost:3000";
+    }
 }
 
 const getProduct = async function(cod)
