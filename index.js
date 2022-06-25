@@ -18,7 +18,7 @@ http.createServer(async (req,res) => {
     
     if(end.includes("api"))
     {
-        return res.end(JSON.stringify(process.env.API_URL));
+        return res.end(JSON.stringify({"url":process.env.API_URL}));
     }
     else
     {

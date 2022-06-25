@@ -12,6 +12,7 @@ const loadApiUrl = async function()
     {
         await fetch(url, {method: "GET"})
         .then((r) => r.json()).then((r) => ret = r.url)
+        console.log(r.url)
     }
     catch (err)
     {
@@ -23,7 +24,7 @@ const loadApiUrl = async function()
     }
     else
     {
-        return "http://localhost:3000";
+        console.error("IMPOSSIVEL CONTECTAR AO SERVIDOR, RECARREGUE ESTA PAGINA");
     }
 }
 
