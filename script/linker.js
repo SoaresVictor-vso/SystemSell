@@ -16,15 +16,16 @@ const loadApiUrl = async function()
     }
     catch (err)
     {
-        console.error("IMPOSSIVEL CONTECTAR AO SERVIDOR, RECARREGUE ESTA PAGINA");
+        console.log(err);
     }
     if(ret != null)
     {
+        console.log(ret);
         return ret;
     }
     else
     {
-        console.error("IMPOSSIVEL CONTECTAR AO SERVIDOR, RECARREGUE ESTA PAGINA");
+        console.log("--");
     }
 }
 
