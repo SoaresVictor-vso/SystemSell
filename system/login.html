@@ -9,15 +9,15 @@
     <link rel="stylesheet" href="../style/basePopup.css">
     <title>Login</title>
 </head>
-<body>
-    <form>
+<body id="Body">
+    <form id="login" autocomplete="off">
         <label class="alerta hide" id="AlertCredentials">Usuário e/ou senha incorreto(s)</label><br>
         <div class="placeholder" > </div>
-        <label for="Username">Nome de Usuário:</label> <br>
-        <input type="text" name="Username" id="Username" placeholder="Digite seu nome de usuário" class="textEnter"> <br><br>
+        <label for="Username" >Nome de Usuário:</label> <br>
+        <input type="text" name="Username" id="Username" placeholder="Digite seu nome de usuário" class="textEnter" autofocus> <br><br>
         <label for="Password">Senha: </label> <br>
         <input type="password" name="Password" id="Password" class="textEnter"> <br><br>
-        <input type="button" value="Login" onclick="login('test','patinho123')" class="loginButton"> <br>
+        <input type="button" value="Login" onclick="login('test','patinho123')" class="loginButton" id="LoginButton"> <br>
     </form>
     
 

@@ -1,0 +1,41 @@
+.box{
+
+    display: inline-block;
+    width: 15vw;
+    height: 25vh;
+
+    background-color: var(--backround);
+    color: var(--default-text);
+
+    font-size: 1em;
+
+    border: 5px;
+    border-radius: 10px;
+    border-color: var(--detail-green);
+    border-style: solid;
+
+    margin: 1vw;
+
+    cursor: pointer;
+}
+
+.box:hover{
+    border-color: var(--detail-red);
+    color: var(--detail-red);
+}
+
+.containerBoxes{
+    width: 52vw;
+    margin-left: 23vw;
+}
+
+h1{
+    margin: 20px;
+    padding-top: 5vh;
+    padding-bottom: 20vh;
+
+}
+
+.titulo{
+    text-align: center;
+}

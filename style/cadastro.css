@@ -1,0 +1,120 @@
+
+
+form{
+    width: 80vw;
+    margin-left: 10vw;
+    margin-top: 5vh;
+
+}
+
+
+input{
+    text-transform: uppercase;
+
+    padding: 5px;
+    padding-left: 10px;
+    margin-bottom: 10vh;
+
+    font-size: 1em;
+
+    -webkit-appearance: none;
+    margin: 0;    
+
+    background-color: var(--background);
+
+    border: 3px;
+    border-color: var(--detail-purple);
+    border-style: solid;
+
+    
+    color: var(--text-default);
+
+    cursor:text;
+}
+
+.errorContent{
+    background-color: #000;
+    width: 50vw;
+
+    padding-left: 5vw;
+    padding-right: 5vw;
+    padding-bottom: 5vh;
+
+    border: 5px;
+    border-radius: 10px;
+    border-color: var(--detail-red);
+    border-style: solid;
+}
+
+label{
+    margin-right: 10px;
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input#Description{
+    width: 40vw;
+}
+
+input#Quantity{
+    text-align: right;
+    width: 5vw;
+
+    
+    margin-right: 3vw;
+
+}
+
+#Unity{
+    
+    font-size: 1em;
+    width: 7vw;
+    padding: 5px;
+
+    background-color: var(--background-default);
+    color: var(--text-default);
+    
+    border: 3px; 
+    border-top: 0;
+    border-right: 0;
+    border-color: var(--detail-purple);
+    border-style: solid;
+}
+
+select option{
+    
+    background-color: #000;  
+    color: var(--text-default);
+}
+
+.inline{
+    display: inline-block;
+}
+
+.values{
+    width: 15vw;
+    margin-right: 2vw;
+}
+
+.values input{
+    text-align: right;
+    width: 10vw;
+}
+
+#Salvar{
+    margin-top: 5vh;
+    text-align: center;
+
+    padding: 10px;
+
+    cursor: pointer;
+}
+
+div.placeholder{
+    height:  7vh;
+}

@@ -6,6 +6,7 @@ let nocadFinal = false;
 let finalizePopup = false;
 let showlist = false;
 let noPermission = false;
+let showSearch = false;
 
 //Algum produto sem cadastro passado?
 let nocadAlert = false;
@@ -71,6 +72,11 @@ const onKeyUp = function(e)
         openList();
     }
 
+    else if (e.code === "IntlRo" || e.code === "NumpadDivide")
+    {
+        openSearch();
+    }
+
 
     else if(e.code == 'Escape')
     {
@@ -81,6 +87,10 @@ const onKeyUp = function(e)
         else if(finalizePopup)
         {
             cancellFinalize();
+        }
+        else if(showSearch)
+        {
+            closeSearch();
         }
     }
     

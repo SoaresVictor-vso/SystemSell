@@ -2,7 +2,7 @@ const nextPage = "/index";
 const headerFetch = {'Accept': 'application/json', 'Content-Type': 'application/json'}
 let jwt;
 let url;
-
+const  inputFields = ["Username", "Password", "LoginButton"];
 
 document.addEventListener('DOMContentLoaded', async () => {
     
@@ -17,6 +17,23 @@ document.addEventListener('DOMContentLoaded', async () => {
     })
         
 })
+
+document.addEventListener('keyup', (e) => {
+    if(e.code === 'Enter' || e.code === 'NumpadEnter')
+    {
+        const active = document.activeElement.id;
+        let activeIndex = inputFields.indexOf(active);
+        if(activeIndex > inputFields.length - 2)
+        {
+            activeIndex = -1
+        }
+
+        console.log(">" + active + "<>" + activeIndex)
+
+        document.getElementById(inputFields[activeIndex + 1]).focus();
+        
+    }
+});
 
 const checkToken = async function(token)
 {
@@ -59,7 +76,7 @@ const checkToken = async function(token)
 
 const login = async function ()
 {
-    
+    changeLoading(true);
     const rbody = setLoginCredentials();
     await fetch(url + "/?op=20", {
         method: "POST",
@@ -71,6 +88,7 @@ const login = async function ()
         
         if(r.jwt == null)
         {
+            changeLoading(false);
             alertCredentials();
         }
         else
@@ -96,4 +114,18 @@ const setLoginCredentials = function ()
 const alertCredentials = function()
 {
     document.getElementById('AlertCredentials').classList.remove("hide");
+}
+
+const changeLoading = function(active)
+{
+    if(active)
+    {
+        document.getElementById("Body").classList.add("loading");
+        document.getElementById("Body").classList.remove("notLoading");
+    }
+    else
+    {
+        document.getElementById("Body").classList.remove("loading");
+        document.getElementById("Body").classList.add("notLoading");
+    }
 }

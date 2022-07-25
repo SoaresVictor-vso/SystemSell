@@ -5,16 +5,23 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../style/base.css">
+        <link rel="stylesheet" href="../style/Hub.css">
         <title>Index</title>
     </head>
 <body>
     <div class="main">
-        <h1>Menu de opções</h1>
-        <br>
-        <br>
-        <div id="toPdv"></div>
-        <div class="Logout">
-            <input type="button" value="Logout" onclick="logout()">
+
+        <div class="titulo">
+
+            <h1>Ações Possíveis</h1>
+        </div>
+
+        <div class="containerBoxes">
+            <input type="button" value="Programa de Vendas" class="box" onclick="openPdv()">
+        
+            <input type="button" value="Cadastro de produtos" class="box" onclick="openCad()">
+
+            <input type="button" value="Sair" class="box" onclick="logout()">
         </div>
 
         

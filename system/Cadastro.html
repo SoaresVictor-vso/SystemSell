@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/base.css">
+    <link rel="stylesheet" href="../style/menuBar.css">
+    <link rel="stylesheet" href="../style/cadastro.css">
+    <link rel="stylesheet" href="../style/basePopup.css">
+    <title>Cadastro</title>
+</head>
+<body id="all">
+    <div class="menu">
+        <table>
+            <tr>
+                <td class="menuOption" id="funcF4">
+                    <div onclick="sendCad()">
+                        <h4>Finalizar cadastro</h4>
+                        <p>(F4)</p>
+                    </div>
+                </td>
+                <td class="menuOption"></td>
+            </tr>
+        </table>
+        <div class="menuHline"></div>
+    </div>
+
+    <form autocomplete="off">
+        <label for="Barcode">Código de barras</label>
+        <br>
+        <input type="text" maxlength="15" name="Barcode" id="Barcode" autofocus >
+        <br><br>
+
+        <div class="placeholder"></div>
+
+        <label for="Description">Descrição do produto</label>
+        <br>
+        <input type="text" maxlength="40" name="Description" id="Description" >
+        <br><br>
+
+        <div class="placeholder"></div>
+
+        <div class="inline">
+            <label for="Quantity">Quantidade</label>
+            <br>
+            <input type="number" name="Quantity" id="Quantity" >
+        </div>
+
+        <div class="inline">
+            <label for="Unity">Unidade</label>
+            <br>
+
+            <select id="Unity">
+                <option value="UN">un</option>
+                <option value="KG">kg</option>
+                <option value="M">m</option>
+            </select>        
+        </div>
+        
+        <div class="placeholder"></div>
+
+        <br>
+
+        <div class="inline values">
+            <label for="BuyPrice">Preço de compra</label>
+            <br>
+            <input type="number" name=BuyPrice" id="BuyPrice">
+        </div>
+        
+        <div class="inline values">
+            <label for="Margin">Margem de lucro</label>
+            <br>
+            <input type="number" name="Margin" id="Margin"> %
+        </div>
+
+        <div class="inline values">
+            <label for="SellPrice">Preço de venda</label>
+            <br>
+            <input type="number" name="SellPrice" id="SellPrice">
+        </div>
+        
+        <br><br>
+        <div class="placeholder"></div>
+
+        <input type="button" value="Salvar" id="Salvar" onclick="sendCad()">
+    
+         
+        
+        
+        
+        
+        
+        
+        
+        
+    </form>
+    
+    <br>
+    <br>
+    <br>
+    <a href="../index.html"> Voltar para o menu.</a>
+
+
+
+    <script src="../script/formCadProd.js"></script>
+    <script src="../script/linker.js"></script>
+    <script src="../script/pdvPopup.js"></script>
+</body>
+
+<div class="popupContainer popupInactive" id="PopupError">
+    <div class="errorContent">
+        <h2 class="alerta">Alerta</h2>
+        <p class="alerta" id="ErrorMsg"></p>
+    </div>
+</div>
+</html>

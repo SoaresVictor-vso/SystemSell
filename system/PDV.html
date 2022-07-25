@@ -24,7 +24,22 @@
                         </div>
                     </td>
                     <td class="menuOption"></td>
+                    <td class="menuOption" id="funcF8">
+                        <div onclick="openList()">
+                            <h4>Produtos passados</h4>
+                            <p>(F8)</p>
+                        </div>
+                    </td>
+                    <td class="menuOption"></td>
+                    <td class="menuOption" id="func/">
+                        <div onclick="openSearch()">
+                            <h4>Buscar Produto</h4>
+                            <p>(/)</p>
+                        </div>
+                    </td>
+                    <td class="menuOption"></td>
                 </tr>
+                
             </table>
             <div class="menuHline"></div>
         </div>
@@ -105,6 +120,7 @@
     <script src="/script/PDV.js"></script>
     <script src="/script/pvdLoadProducts.js"></script>
     <script src="/script/pdvPaymode.js"></script>
+    <script src="/script/search.js"></script>
 
     
     <link rel="stylesheet" href="../style/basePopup.css">
@@ -112,6 +128,7 @@
     <link rel="stylesheet" href="../style/pdvPopupFinalize.css">
     <link rel="stylesheet" href="../style/pdvPopupFinalNoCad.css">
     <link rel="stylesheet" href="../style/pdvPopupList.css">
+    <link rel="stylesheet" href="../style/searchPopup.css">
 
 </body>
 
@@ -183,6 +200,34 @@
                 <td><input type="button" value="Voltar" class="listBtn" id="BtnBack" onclick="closeList()"></td>
             </td>
         </table>
+    </div>
+</div>
+
+<div class="contPopup popupInactive" id="PopupSearch">
+    <div class="search">
+        <input class="searchText" type="text" placeholder="Nome do produto" id="SerachText">
+        <input type="button" value="Pesquisar" class="btnSearch" id="SearchButton" onclick="searchItensByName()">
+
+        <div class="listElements" id="ListElements">
+            <div class="searchItem" id="TblSearch">
+                <table class="tblSearch">
+                    <tr>
+                        <td><table><tr>
+                                    <td class="sBarcode"><p >Código</p></td>
+                                    <td class="colSearch sDescription"><p>Descrição</p></td>
+                                    <td class="colSearch sQuant"><p>Estoque</p></td>
+                                    <td class="colSearch sPrice"><p">Preço</p></td>
+                        </tr></table></td>
+                    </tr>
+                    
+                </table>
+
+            </div>
+
+        </div>
+
+        <input type="button" value="Voltar" class="listBtn" id="ExitSearch" onclick="closeSearch()">
+
     </div>
 </div>
 

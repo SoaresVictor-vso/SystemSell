@@ -19,9 +19,6 @@ form{
     border-radius: 0;
 
     background-color: var(--background);
-
-    
-
 }
 
 label{
@@ -38,6 +35,12 @@ input{
 
     color: var(--text-default);
 }
+
+input:-webkit-autofill,
+  input:-webkit-autofill:focus {
+    transition: background-color 600000s 0s, color 600000s 0s;
+  }
+
 
 input.loginButton{
     height: 5vh;
@@ -83,4 +86,12 @@ input.textEnter{
 
 div.placeholder{
     height:  8vh;
+}
+
+.loading{
+    cursor:wait;
+}
+
+.notLoading{
+    cursor:default;
 }
