@@ -86,20 +86,7 @@ input.finalNoCadBtn
     /*border-color: #00ff80;*/
 }
 
-div.contPopup
-{
-    background-color: rgba(0, 0, 0, 0.5);
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    justify-content: center;
-    align-items: center;
-    
-    overflow: auto;
 
-}
 
 
 

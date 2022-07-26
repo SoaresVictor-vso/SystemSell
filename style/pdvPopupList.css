@@ -39,4 +39,6 @@ input.listBtn
     font-size: 1vw;
 
     color: #000;
+
+    background-color: var(--text-default);
 }

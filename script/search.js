@@ -1,25 +1,36 @@
+let foundItens = [];
+
 const searchItensByName = async function()
 {
     const text = document.getElementById("SerachText").value;
-    console.log(text)
 
     const sItens = await find(text);
+    foundItens = sItens;
     loadTable(sItens);
 }
 
 const loadTable = function(itens)
 {
-    console.log(itens)
-    const init = "<tr><td><table><tr><td class=\"sBarcode\"><p class=\"minimal\">"
+    let init;
+    if(document.title == "PDV")
+    {
+        init = "<tr><td><div onclick=\"openItemPdv("
+    }
+    else if(document.title == "Cadastro")
+    {
+        init = "<tr><td><div onclick=\"openItemEditor("
+    }
+    const postInit = ")\"><table><tr><td class=\"sBarcode\"><p class=\"minimal\">"
     const interval = "</p></td><td class=\"colSearch "
     const postInterval = "\"><p class=\"minimal\">"
-    const end = "</p></td></tr></table></td></tr>"
+    const end = "</p></td></tr></table></div></td></tr>"
 
     let buffer = "<table class=\"tblSearch\"><tr><td><table><tr><td class=\"sBarcode\"><p >Código</p></td><td class=\"colSearch sDescription\"><p>Descrição</p></td><td class=\"colSearch sQuant\"><p>Estoque</p></td><td class=\"colSearch sPrice\"><p>Preço</p></td></tr></table></td></tr>"
 
     let barcode, description, quant, price;
     quant = 0;
     price = 0;
+    let i = 0;
     itens.forEach(e => {
         
         barcode = e.barcode;
@@ -28,12 +39,13 @@ const loadTable = function(itens)
         price = (e.sellprice /100).toFixed(2)
 
 
-        let rowHtml = init + barcode + interval + "sDescription" + postInterval + description;
+        let rowHtml = init + i + postInit + barcode + interval + "sDescription" + postInterval + description;
         rowHtml += interval + "sQuant" + postInterval + quant + "un" + interval
         rowHtml += "sPrice" + postInterval + "R$" + price + end;
 
         buffer += rowHtml;
-        console.log(rowHtml)
+
+        i++;
     });
 
     buffer += "</table>"
@@ -45,6 +57,7 @@ const openSearch = function()
 {
     awakePopup("PopupSearch");
     showSearch = true;
+    searchPopup = true;
 
     document.getElementById("SerachText").focus();
 }
@@ -53,6 +66,7 @@ const closeSearch = function()
 {
     document.getElementById("SerachText").value = "";
     showSearch = false;
+    searchPopup = false;
     killPopup("PopupSearch")
 
     const bc = document.getElementById("Barcode");
@@ -63,4 +77,30 @@ const closeSearch = function()
     }
 
     document.getElementById("Barcode").focus();
+}
+
+const openItemPdv = function(index)
+{
+    const item = foundItens[index]
+    const prod = {
+        barcode : String(item.barcode),
+        description : item.description,
+        quant : item.quant,
+        price : item.sellprice,
+    }
+
+    quant = getQuantCod(readBarcode())[0];
+
+    setProduct(prod, item.barcode, quant);
+
+    closeSearch();
+}
+
+const openItemEditor = async function(index)
+{
+    document.getElementById("Barcode").value = foundItens[index].barcode;
+    
+    loadCad(foundItens[index].barcode);
+    
+    closeSearch();
 }

@@ -20,6 +20,24 @@
                         <p>(F4)</p>
                     </div>
                 </td>
+                <td class="menuOption" id="funcF8">
+                    <div onclick="fullClear()">
+                        <h4>Cancelar Aleterações</h4>
+                        <p>(F8)</p>
+                    </div>
+                </td>
+                <td class="menuOption" id="func/">
+                    <div onclick="openSearch()">
+                        <h4>Buscar Produto</h4>
+                        <p>(/)</p>
+                    </div>
+                </td>
+                <td class="menuOption" id="funcDel">
+                    <div onclick="toMenu()">
+                        <h4>Sair</h4>
+                        <p>(Delete)</p>
+                    </div>
+                </td>
                 <td class="menuOption"></td>
             </tr>
         </table>
@@ -83,17 +101,7 @@
         <br><br>
         <div class="placeholder"></div>
 
-        <input type="button" value="Salvar" id="Salvar" onclick="sendCad()">
-    
-         
-        
-        
-        
-        
-        
-        
-        
-        
+        <input type="button" value="Salvar" id="Salvar" onclick="sendCad()">       
     </form>
     
     <br>
@@ -106,12 +114,46 @@
     <script src="../script/formCadProd.js"></script>
     <script src="../script/linker.js"></script>
     <script src="../script/pdvPopup.js"></script>
+    <script src="../script/search.js"></script>
+
+    <link rel="stylesheet" href="../style/searchPopup.css">
+    <link rel="stylesheet" href="../style/pdvPopupList.css">
+
 </body>
 
 <div class="popupContainer popupInactive" id="PopupError">
     <div class="errorContent">
         <h2 class="alerta">Alerta</h2>
         <p class="alerta" id="ErrorMsg"></p>
+    </div>
+</div>
+
+<div class="contPopup popupInactive" id="PopupSearch">
+    <div class="search">
+        <input class="searchText" type="text" placeholder="Nome do produto" id="SerachText">
+        <input type="button" value="Pesquisar" class="btnSearch" id="SearchButton" onclick="searchItensByName()">
+
+        <div class="listElements" id="ListElements">
+            <div class="searchItem" id="TblSearch">
+                <table class="tblSearch">
+                    <tr>
+                        <td><table><tr>
+                                    <td class="sBarcode"><p >Código</p></td>
+                                    <td class="colSearch sDescription"><p>Descrição</p></td>
+                                    <td class="colSearch sQuant"><p>Estoque</p></td>
+                                    <td class="colSearch sPrice"><p">Preço</p></td>
+                        </tr></table></td>
+                    </tr>
+                    
+                    
+                </table>
+
+            </div>
+
+        </div>
+
+        <input type="button" value="Voltar" class="listBtn" id="ExitSearch" onclick="closeSearch()">
+
     </div>
 </div>
 </html>

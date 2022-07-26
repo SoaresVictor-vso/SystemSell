@@ -38,6 +38,7 @@
     overflow: auto;
 }
 
+
 .btnSearch 
 {
 
@@ -51,6 +52,7 @@
     font-size: 1vw;
 
     color: #000;
+    background-color: var(--text-default);
 }
 
 .tblSearch{
@@ -76,6 +78,8 @@
 }
 
 div.searchItem table tr  :hover{
+    cursor: pointer;
+
     background-color: var(--detail-green);
     color: #000;
 }

@@ -10,6 +10,7 @@ const all = document.getElementById("all");
 let loadedBarcode;
 let errorPopup = false;
 let errorPermission = false;
+let searchPopup = false;
 
 const inputFields = ["Barcode", "Description", "Quantity", "BuyPrice", "Margin", "SellPrice", "Salvar"]
 
@@ -37,6 +38,27 @@ document.addEventListener('keyup', (e) => {
             window.location.href = "/login";
         }
     }
+
+    
+    else if (e.code === "IntlRo" || e.code === "NumpadDivide")
+    {
+        openSearch();
+    }
+
+    else if (e.code === "Escape" && searchPopup)
+    {
+        closeSearch();
+    }
+
+    else if (e.code === "F8")
+    {
+        fullClear();
+    }
+
+    else if (e.code === "Delete")
+    {
+        toMenu();
+    }
 })
 
 document.addEventListener('keydown', async (e) => {
@@ -50,7 +72,6 @@ document.addEventListener('keydown', async (e) => {
         }
         else if(document.activeElement.id == "Barcode")
         {
-            console.log("É, alguém, né...")
             loadedBarcode = String(barcode.value);
 
             all.style.cursor = "wait";
@@ -69,6 +90,7 @@ document.addEventListener('keydown', async (e) => {
     {
         sendCad();
     }
+
 
 });
 
@@ -117,6 +139,7 @@ const loadCad = async function(barcode)
     }
     else
     {
+        loadedBarcode = prod.barcode
         description.value = prod.description;
         quant.value = parseInt(prod.quant);
         buyPrice.value = parseFloat(prod.coast / 100).toFixed(2);
@@ -176,10 +199,21 @@ const clear = function()
     sellPrice.value = "";
 }
 
+const fullClear = function()
+{
+    barcode.value = "";
+    clear();
+    barcode.focus();
+}
+
 const showPopup = function(msg)
 {
-    console.log("*/*/");
     document.getElementById("ErrorMsg").innerText = msg;
     errorPopup = true;
     awakePopup("PopupError");
+}
+
+const toMenu = function()
+{
+    window.location.href =" /index";
 }

@@ -42,9 +42,6 @@ const fetchQuery = function(query)
     }
     try 
     {
-        
-        //console.log(reqBody)
-
         await fetch(apiUrl + "/req/?op=1", {
             method: "POST",
             headers: {

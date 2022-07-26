@@ -19,12 +19,11 @@ const loadApiUrl = async function()
     }
     if(ret != null)
     {
-        console.log(ret);
         return ret;
     }
     else
     {
-        console.log("--");
+        console.alert("No API address, using default localhost:3000");
     }
 }
 
@@ -42,8 +41,6 @@ const getProduct = async function(cod)
             "token":token,
             "barcode":cod
         }
-    
-        //console.log(reqBody)
 
         await fetch(apiUrl + "/req/?op=1", {
             method: "POST",
@@ -61,7 +58,6 @@ const getProduct = async function(cod)
     {
         ret = {erro : error};
     }
-    
     return ret;
 }
 
@@ -79,7 +75,6 @@ const getFullProduct = async function(cod)
             "token":token,
             "barcode":cod
         }
-        console.log("ok")
 
         await fetch(apiUrl + "/req/?op=3", {
             method: "POST",
@@ -90,7 +85,6 @@ const getFullProduct = async function(cod)
             body: JSON.stringify(fullReqBody)
         }).then((r) => r.json()).then((r) => {
             ret = r;
-            console.log(r)
         })
         
     } 
@@ -123,8 +117,6 @@ const alterProduct = async function(prod)
                 "quant":prod.quant
             }
         }
-    
-        console.log(reqBody)
 
         await fetch(apiUrl + "/req/?op=2", {
             method: "POST",
@@ -163,8 +155,6 @@ const find = async function(name)
             "token":token,
             "name":name
         }
-    
-        //console.log(reqBody)
 
         await fetch(apiUrl + "/req/?op=4", {
             method: "POST",
@@ -184,6 +174,33 @@ const find = async function(name)
     }
     
     return ret;
+}
+
+const buy = async function(prodList)
+{
+    try 
+    {
+        let reqBody = {
+            "token":token,
+            "list":prodList
+        }
+
+        await fetch(apiUrl + "/req/?op=5", {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+            body: JSON.stringify(reqBody)
+        }).then((r) => r.json()).then((r) => {
+            ret = r;
+        })
+        
+    } 
+    catch (error) 
+    {
+        ret = {erro : error};
+    }
 }
 
 

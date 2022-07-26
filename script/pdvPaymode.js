@@ -9,6 +9,12 @@ const reloadFinalValue = function()
 const pagamentoDinheiro = function()
 {
     console.log("Pago em dinheiro");
+    let list = [];
+    historico.forEach(e => {
+        const item = {quant : e.quant, barcode : e.barcode};
+        list.push(item);
+    })
+    buy(list)
     reset();
 }
 

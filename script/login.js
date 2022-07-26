@@ -28,8 +28,6 @@ document.addEventListener('keyup', (e) => {
             activeIndex = -1
         }
 
-        console.log(">" + active + "<>" + activeIndex)
-
         document.getElementById(inputFields[activeIndex + 1]).focus();
         
     }

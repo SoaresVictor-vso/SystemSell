@@ -54,7 +54,7 @@ const onKeyUp = function(e)
 {
     if (e.code === 'Enter' || e.code === 'NumpadEnter')
     {
-        if(!finalizePopup)
+        if(!finalizePopup && !showSearch)
         {
             loadProduct();
         }
@@ -94,6 +94,10 @@ const onKeyUp = function(e)
         }
     }
     
+    else if (e.code === "Delete")
+    {
+        toMenu();
+    }
 
     if(finalizePopup)
     {
@@ -131,5 +135,10 @@ const onAnyclick = function()
     {
         reloadFinalValue();
     }
+}
+
+const toMenu = function()
+{
+    window.location.href =" /index";
 }
 
