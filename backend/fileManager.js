@@ -26,20 +26,7 @@ const getRole = function(token)
 
 const getPath = function(end)
 {
-    let basePath = String(__dirname);
-
-    if(basePath.includes("/backend"))
-    {
-        basePath = basePath.split("/backend", 1)[0];
-    }
-    else if(basePath.includes("\\backend"))
-    {
-        basePath = basePath.split("\\backend", 1)[0];
-    }
-    
-
-    
-    return setPath(basePath, getName(end));
+    return setPath(getBasePath(), getName(end));
 }
 
 const getName = function(end)
@@ -87,4 +74,20 @@ const setPath = function (basePath, fileName)
     return filePath;
 }
 
-module.exports = { getPath, getName, setPath }
+const getBasePath = function()
+{
+    let basePath = String(__dirname);
+
+    if(basePath.includes("/backend"))
+    {
+        basePath = basePath.split("/backend", 1)[0];
+    }
+    else if(basePath.includes("\\backend"))
+    {
+        basePath = basePath.split("\\backend", 1)[0];
+    }
+
+    return basePath;
+}
+
+module.exports = { getPath, getName, setPath, getBasePath }

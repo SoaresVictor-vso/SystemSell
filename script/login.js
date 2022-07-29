@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     url = await loadApiUrl()
     jwt = await localStorage.getItem('jwt')
-    
+    console.log(jwt)
     checkToken(jwt).then((r) => {
         if(r)
         {
@@ -92,6 +92,7 @@ const login = async function ()
         else
         {
             localStorage.setItem('jwt', r.jwt)
+            console.log(">>>" + r.jwt + "\n   " + localStorage.getItem('jwt'))
             jwt = r.jwt;
             window.location.href = nextPage
         }

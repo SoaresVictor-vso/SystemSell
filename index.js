@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const URL = require('url');
 //const reqManager = require('./backend/reqManager');
-const { getPath } = require('./backend/fileManager');
+const { getPath, getBasePath } = require('./backend/fileManager');
 const dotenv = require('dotenv');
 //const { application } = require('express');
 dotenv.config();
@@ -34,24 +34,34 @@ function loadFile(filePath, res)
 
     if(filePath != "") 
     {
-        try
-        {
-            fs.readFile(filePath, (err, content) => {
-                if(err) {
-                    throw err;
-                    return;
-                }
-                else
+        
+        fs.readFile(filePath, (err, content) => {
+            if(err) {
+                try
                 {
-                    return res.end(content);
+                    let file = path.join(getBasePath(), "/system/erro404.html");
+                    console.log(file)
+                    fs.readFile(file , (err, content) => {
+                        if(err) {
+                            throw err;
+                        }
+                        else
+                        {
+                            return res.end(content);
+                        }
+                    })
                 }
-            })
-        }
-        catch (error)
-        {
-            return console.log(error);
-            
-        }
+                catch (error)
+                {
+                    return res.end("<h1>ERRO NO SERVIDOR!</h1>");
+                }
+                    }
+                    else
+                    {
+                        return res.end(content);
+                    }
+                })
+        
     }
     
 }
