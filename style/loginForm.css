@@ -88,10 +88,3 @@ div.placeholder{
     height:  8vh;
 }
 
-.loading{
-    cursor:wait;
-}
-
-.notLoading{
-    cursor:default;
-}

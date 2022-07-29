@@ -1,7 +1,18 @@
 let foundItens = [];
 
+document.addEventListener('keyup',(e) => {
+    if((e.code === 'Enter' || e.code === 'NumpadEnter') && (showSearch || searchPopup))
+    {
+        searchItensByName();
+    }
+})
+
 const searchItensByName = async function()
 {
+    document.getElementById("PopupSearch").classList.add("loading");
+    document.getElementById("PopupSearch").classList.remove("notLoading");
+    document.getElementById("SerachText").classList.add("loading");
+    document.getElementById("SerachText").classList.remove("notLoading");
     const text = document.getElementById("SerachText").value;
 
     const sItens = await find(text);
@@ -51,6 +62,10 @@ const loadTable = function(itens)
     buffer += "</table>"
 
     document.getElementById("TblSearch").innerHTML = buffer;
+    document.getElementById("PopupSearch").classList.remove("loading");
+    document.getElementById("PopupSearch").classList.add("notLoading");
+    document.getElementById("SerachText").classList.remove("loading");
+    document.getElementById("SerachText").classList.add("notLoading");
 }
 
 const openSearch = function()

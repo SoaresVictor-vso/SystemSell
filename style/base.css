@@ -64,3 +64,10 @@ p.minimal
     color: var(--detail-red);
 }
 
+.loading{
+    cursor:wait;
+}
+
+.notLoading{
+    cursor:default;
+}
