@@ -14,7 +14,21 @@ let searchPopup = false;
 
 const inputFields = ["Barcode", "Description", "Quantity", "BuyPrice", "Margin", "SellPrice", "Salvar"]
 
-document.addEventListener('mouseup', (e) => {
+document.addEventListener('mouseup', async (e) => {
+    const active = document.activeElement.id;
+    //let activeIndex = inputFields.indexOf(active);
+    if(document.activeElement.id != "Barcode" && description.value == "")
+    {
+        loadedBarcode = String(barcode.value);
+
+        all.style.cursor = "wait";
+
+        await loadCad(String(barcode.value))
+
+        all.style.cursor = "default";
+    }
+
+
     if(errorPopup)
     {
         errorPopup = false;
@@ -27,7 +41,7 @@ document.addEventListener('mouseup', (e) => {
     }
 })
 
-document.addEventListener('keyup', (e) => {
+document.addEventListener('keyup', async (e) => {
     if(errorPopup)
     {
         errorPopup = false;
@@ -59,12 +73,8 @@ document.addEventListener('keyup', (e) => {
     {
         toMenu();
     }
-})
 
-document.addEventListener('keydown', async (e) => {
-    
-    
-    if(e.code === 'Enter' || e.code === 'NumpadEnter')
+    else if(e.code === 'Enter' || e.code === 'NumpadEnter')
     {
         if(document.activeElement.id == "Margin" || document.activeElement.id == 'BuyPrice')
         {
@@ -90,9 +100,19 @@ document.addEventListener('keydown', async (e) => {
     {
         sendCad();
     }
+    else if(e.code === 'Tab' && document.activeElement.id == "Description")
+    {
+        loadedBarcode = String(barcode.value);
+
+        all.style.cursor = "wait";
+
+        await loadCad(String(barcode.value))
+
+        all.style.cursor = "default";
+    }
+})
 
 
-});
 
 
 const syncSellPrice = function()
