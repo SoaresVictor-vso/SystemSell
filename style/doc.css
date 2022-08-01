@@ -1,0 +1,42 @@
+html { overflow:auto; }
+
+main{
+    margin-left: 13vw;
+    width: 70vw;
+}
+
+img{
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    margin-left: 0vw;
+    width: 70vw;
+
+    border: 5px;
+    border-style:  solid;
+    border-color:  var(--text-default);
+}
+
+p{
+    font-size: 1.2em;
+    padding-top: 30px;
+
+    text-align: justify;
+}
+
+p.credentials{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h3{
+    text-align: justify;
+}
+
+h2{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+a{
+    padding: 0;
+    color: var(--detail-green);
+}

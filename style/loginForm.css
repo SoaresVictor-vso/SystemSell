@@ -19,6 +19,8 @@ form{
     border-radius: 0;
 
     background-color: var(--background);
+
+    text-align: center;
 }
 
 label{

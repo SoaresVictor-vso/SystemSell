@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentacao</title>
+    <link rel="stylesheet" href="../style/base.css">
+    <link rel="stylesheet" href="../style/doc.css">
+</head>
+<body>
+    
+
+    <main>
+        <h1>Bem vindo(a) à Documentação</h1>
+        <br>
+        <h3>Este é um sistema de gerenciamento de produtos e ponto de venda (PDV), semelhante aos utilizados em mercados, desenvolvido para fins de ganho de experiência e prática do desenvolvimento de software, com enfase na parte de Backend (lado do servidor).</h3>
+        <h3>Pela natureza deste tipo de sistema, o uso em dispositivos móveis tais quais tablets e smartphones é incomum, portanto, faz-se desnecessário e contraproducente a optimização do mesmo para uma boa adequação da interface para dispositivos Android e IOS.</h3>
+        <br><br>
+        <h2>Aqui estará disponível a forma de funcionamento deste sistema, dividido em:</h2>
+        <table>
+            <tr>
+                <td>
+                    <a href="#Geral">Informações Gerais;</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="#Cadastro">Cadastro de Produtos</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="#PDV">Interface de Vendas;</a>
+                </td>
+            </tr>
+        </table>
+        
+        <br><br>
+    
+        <h2 id="Geral">Informações Gerais</h2>
+        <p>
+            Na página de login, deve-se utilizar um nome de usuário e uma senha. Após autenticado, o sistema reconhecerá o usuário por duas horas, desde que tente entrar novamente pelo mesmo navegador.
+        </p>
+        <p>Caso você não possua uma conta de acesso, utilize as seguintes credenciais para entrar com permissões de "editor" e "caixa":</p>
+        <p class="credentials">Usuário: convidado</p>
+        <p class="credentials">Senha: lgHNLAdWr9sM</p>
+        <p>Erros podem ser reportados para o email soaresvictor479@gmail.com ou no <a href="https://github.com/SoaresVictor-vso/SystemSell/issues" target="_blank">Github.</a></p>
+    
+        <br><br>
+        <h3>Abaixo está disponível todo o código do programa, dividido em dois repositórios:</h3>
+        <br>
+        <a href="https://github.com/SoaresVictor-vso/SystemSell/" target="_blank">Módulo de Arquivos</a>
+        <br>
+        <a href="https://github.com/SoaresVictor-vso/SystemSellApi/" target="_blank">Módulo de Dados</a>
+    
+        <br><br><br>
+        <h3>Contatos do desenvolvedor:</h3>
+        <br>
+        <a href="https://github.com/SoaresVictor-vso/" target="_blank">Github</a>
+        <br>
+        <a href="https://www.linkedin.com/in/victor-soares-b87545225/" target="_blank">Linkedin</a>
+        <br><br><br>
+    
+        <h2 id="Cadastro">Cadastro de Produtos</h2>
+        <img src="../img/cad.png" alt="">
+        <br><br>
+        <p>=> O botão F4 salva um novo cadastro ou todas as alterações feitas em um cadastro já existente.</p>
+        <p>=> O botão F8 cancela todas as alterações realizadas e não salvas de um cadastro.</p>
+        <p>=> O botão / abre a <a href="#pesquisa">ferramenta de pesquisa.</a></p>
+        <p>=> O botão Delete cancela todas as alterações não salvas e retorna para o menu de escolha.</p>
+        <br>
+        <p>=> O campo "Código de Barras" aceita um código de até 15 dígitos, que deve ser único para cada produto, e após digitado, carrega por um momento, e então, se houver algum cadastro com o código nele inserido, preenche os demais campos de acordo com o cadastro, e alterações serão aplicadas sobre o cadastro já existente, caso contrário, ele não preenche nenhum campo e todos os dados inseridos serão salvos em um novo cadastro.</p>
+        <p>=> O campo "Descrição do Produto" é obrigatório e aceita um texto de até 40 caracteres, limitados a letras, números e espaços (" ").</p>
+        <p>=> O campo "Quantidade" é opcional e aceita um número inteiro. Caso não seja preenchido, define o valor como 0 (zero) por padrão.</p>
+        <p>=> O campo "Unidade" é opcional e aceita um tipo de unidade, como kg, m, un. Caso não seja preenchido, define o valor como un (unidade) por padrão.</p>
+        <p>=> O campo "Preço de compra" é opcional e aceita um número com até duas casas decimais. Caso não seja preenchido, define o valor como 0 (zero) por padrão.</p>
+        <p>=> O campo "Margem de Lucro" é opcional e aceita um número inteiro. Caso não seja preenchido, define o valor como 0 (zero) por padrão.</p>
+        <p>=> O campo "Preço de Venda" é opcional e aceita um número inteiro. Caso "Preço de compra" e "Margem de Lucro" sejam preenchidos, após teclar "Enter", o valor será calculado automáticamente, mas poderá ser alterado, caso contrátrio, deverá ser inserido manualmente. Caso não seja preenchido, define o valor como 0 (zero) por padrão.</p>
+        <p>=> O botão "Salvar" envia para o servidor os dados do produto, com todas alterações (caso seja um produto previamente existente).</p>
+    
+        <h2 id="PDV">Interface de Venda</h2>
+        <h2 id="pesquisa">Ferramenta de Pesquisa</h2>
+    </main>
+</body>
+</html>
