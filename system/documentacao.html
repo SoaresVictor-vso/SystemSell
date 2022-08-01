@@ -60,14 +60,14 @@
         <a href="https://github.com/SoaresVictor-vso/" target="_blank">Github</a>
         <br>
         <a href="https://www.linkedin.com/in/victor-soares-b87545225/" target="_blank">Linkedin</a>
-        <br><br><br>
+        <br><br><hr><br>
     
         <h2 id="Cadastro">Cadastro de Produtos</h2>
         <img src="../img/cad.png" alt="">
         <br><br>
         <p>=> O botão F4 salva um novo cadastro ou todas as alterações feitas em um cadastro já existente.</p>
         <p>=> O botão F8 cancela todas as alterações realizadas e não salvas de um cadastro.</p>
-        <p>=> O botão / abre a <a href="#pesquisa">ferramenta de pesquisa.</a></p>
+        <p>=> O botão / abre a <a href="#pesquisa">Ferramenta de Pesquisa.</a></p>
         <p>=> O botão Delete cancela todas as alterações não salvas e retorna para o menu de escolha.</p>
         <br>
         <p>=> O campo "Código de Barras" aceita um código de até 15 dígitos, que deve ser único para cada produto, e após digitado, carrega por um momento, e então, se houver algum cadastro com o código nele inserido, preenche os demais campos de acordo com o cadastro, e alterações serão aplicadas sobre o cadastro já existente, caso contrário, ele não preenche nenhum campo e todos os dados inseridos serão salvos em um novo cadastro.</p>
@@ -78,9 +78,29 @@
         <p>=> O campo "Margem de Lucro" é opcional e aceita um número inteiro. Caso não seja preenchido, define o valor como 0 (zero) por padrão.</p>
         <p>=> O campo "Preço de Venda" é opcional e aceita um número inteiro. Caso "Preço de compra" e "Margem de Lucro" sejam preenchidos, após teclar "Enter", o valor será calculado automáticamente, mas poderá ser alterado, caso contrátrio, deverá ser inserido manualmente. Caso não seja preenchido, define o valor como 0 (zero) por padrão.</p>
         <p>=> O botão "Salvar" envia para o servidor os dados do produto, com todas alterações (caso seja um produto previamente existente).</p>
-    
+        <br><br><hr><br>
         <h2 id="PDV">Interface de Venda</h2>
+        <img src="../img/pontodevenda.png" alt="">
+        <br><br>
+        <p>=> O botão F4 abre a tela de finalização de compra, ignorando os produtos sem cadastro que foram passados, se hoverem.</p>
+        <p>=> O botão F8 abre a lista de produtos que foram passados na compra atual, marcando em vermelho aqueles cujos cadastros não foram encontrados.</p>
+        <p>=> O botão / abre a <a href="#pesquisa">Ferramenta de Pesquisa.</a></p>
+        <p>=> O botão Delete ignora a venda atual caso ela não tenha sido fechada e volta para o menu de escolha.</p>
+        <br>
+        <p>=> O campo "Código de barras" aceita dois tipos de entrada: um código de barras, simplesmente (ex.: "7890123456789"), considerando-se assim, apenas uma unidade, ou uma quantidade seguida por um código de barras, separados por asterisco (ex.: "5*7890123456789")</p>
+        <p>=> O campo de descrição, localizado abaixo do campo "Código de Barras", mostra a descrição do produto referente ao último código de barras passado.</p>
+        <p>=> O campo "Valor Unitário" exibe o valor de venda de uma única unidade do produto referente ao último código de barras passado.</p>
+        <p>=> O campo "Quantidade" exibe o número de unidades passadas na compra atual do produto referente ao último código de barras passado.</p>
+        <p>=> O campo "Subtotal" exibe o resultado da múltiplicação da quantidade pelo valor unitário do produto referente ao último código de barras passado.</p>
+        <p>=> O campo "Valor Total" exibe o valor da soma de todos os produtos passados na compra atual. É o preço que o cliente pagará ao final.</p>
+        <p>=> Ao lado esquerdo da tela há uma lista, que exibe até 4 itens, os mais recentes da compra atual.</p>
+        <br><br><hr><br>
+        
         <h2 id="pesquisa">Ferramenta de Pesquisa</h2>
+        <img src="../img/pesquisa.png" alt="">
+        <br><br>
+        <p>=> O campo "Nome do produto" aceita letras, números, espaços (" ") e o caractere especial "%", utilizado para indicar que pode haver um ou mais caracteres naquela posição.</p>
+        <p>=> O botão "Pesquisar" gera uma lista com todos os resultados compatíveis com a pesquisa e os ordena por ordem alfabérica. Se um item for clicado, ele será selecionado (contará como um item passado caso esteja na <a href="#PDV">Interface de Vendas;</a>, ou carregará o produto para realizar alterações caso esteja no <a href="#Cadastro">Cadastro de Produtos</a></p>
     </main>
 </body>
 </html>
